@@ -1,0 +1,156 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* -----------------------------------------------AGENTS--------------------------------------------- */
+.agent-container{
+    background-color: #f2f2f2;
+}
+
+.first-two-agents {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8rem;
+    padding: 2rem 10rem ;
+   
+}
+
+.agent-card {
+    display: flex;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); 
+    width: 40rem;
+    border-radius: 8px; 
+    overflow: hidden; 
+    border: 2px solid #333333; 
+   
+}
+
+
+.agent-photo {
+    height: 450px;
+    object-fit: cover; 
+    width: 40%;
+}
+
+.agent-info {
+    padding: 1rem 2rem; 
+    flex: 1; 
+    color: #333333;
+}
+
+.agent-info h2 {
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 1rem;
+    color: #9C6B30; 
+}
+
+.agent-info p {
+    font-size: 1.2rem;
+    line-height: 1.5; 
+    color: #333333; 
+}
+
+.agent-info strong {
+    font-weight: 700; 
+    color: #9C6B30; 
+}
+
+/* ------------------------------------------SECOND TWO AGENTS ----------------------------------------- */
+.second-two-agents {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8rem;
+    padding: 2rem 10rem ;
+    
+}
+
+.agent-card2 {
+    display: flex;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); 
+    width: 40rem;
+    border-radius: 8px; 
+    overflow: hidden; 
+    border: 2px solid #333333;
+    
+}
+
+.agent-photo2 {
+    height: 450px;
+    object-fit: cover; 
+    width: 40%;
+}
+
+.agent-info2 {
+    padding: 1rem 2rem; 
+    flex: 1; 
+    color: #333333;
+}
+
+.agent-info2 h2 {
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 1rem;
+    color: #9C6B30; 
+}
+
+.agent-info2 p {
+    font-size: 1.2rem;
+    line-height: 1.5; 
+    color: #333333; 
+}
+
+.agent-info2 strong {
+    font-weight: 700; 
+    color: #9C6B30; 
+}
+
+
+
+/* -----------------------------------------------AGENTS--------------------------------------------- */
+
+
+
+@media (max-width:770px){
+
+    .first-two-agents{
+        flex-direction: column;
+        margin-left: 0;
+    }
+
+    .agent-card{
+        margin-bottom: 2rem;
+        width: auto;
+        height: 100%;
+    }
+    .agent-card2{
+        margin-bottom: 2rem;
+        width: auto;
+        height: auto;
+    }
+
+    .agent-photo{
+        height: 550px;
+        width: 40%;
+    }
+    .agent-photo2{
+        height: 550px;
+        width: 40%;
+    }
+
+    .agent-info2 p{
+        font-size: 1.1rem;
+    }
+
+    .agent-info p{
+        font-size: 1.1rem;
+    }
+
+    .second-two-agents{
+        flex-direction: column;
+        margin-left: 0;
+    }
+}
+    
