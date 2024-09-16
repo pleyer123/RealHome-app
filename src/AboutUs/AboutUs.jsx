@@ -31,10 +31,10 @@ function AboutUs(){
     <div class="values-section">
       <h3>Our Core Values</h3>
       <ul class="values-list">
-        <li><strong>Integrity:</strong> We believe in being honest and transparent with our clients.</li>
-        <li><strong>Commitment:</strong> We are dedicated to finding the right property for every client.</li>
-        <li><strong>Excellence:</strong> We aim to deliver the highest quality service at all times.</li>
-        <li><strong>Innovation:</strong> We continuously improve our processes to meet evolving market needs.</li>
+        <li><strong>Integrity:</strong> <br />We believe in being honest and transparent with our clients.</li>
+        <li><strong>Commitment:</strong> <br />We are dedicated to finding the right property for every client.</li>
+        <li><strong>Excellence:</strong> <br />We aim to deliver the highest quality service at all times.</li>
+        <li><strong>Innovation:</strong> <br />We continuously improve our processes to meet evolving market needs.</li>
       </ul>
     </div>
 

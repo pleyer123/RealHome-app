@@ -22,7 +22,7 @@ function Hero(){
                     <li><a href="#fprop-container">Proporty Listings</a></li>
                     <li><a href="#Agents">Agents</a></li>
                     <li><a href="#about-us">About Us</a></li>
-                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#contactUs">Contact Us</a></li>
                 </ul>
                 <button className="mobile-menu-icon" onClick={() => setIsMobile(!isMobile)} >
                 {isMobile ? <i className="fas fa-times"></i> : <i className="fas fa-bars"></i>}

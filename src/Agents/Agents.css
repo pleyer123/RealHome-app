@@ -155,7 +155,20 @@
     }
 }
 
+@media (min-width:1440px) {
 
+    .agent-info{
+        padding: 10px;
+    }
+    
+
+    .agent-photo2{
+        width: 220px;
+    }
+    .agent-photo{
+        width: 220px;
+    }
+}
 
 @media (max-width: 1024px) {
   
@@ -174,7 +187,7 @@
 
   
     .agent-photo, .agent-photo2 {
-        width: 100%; 
+        width: 370px; 
         height: 600px; 
         object-fit: cover; 
     }
