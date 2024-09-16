@@ -2,6 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    
 }
 
 /* -----------------------------------------------AGENTS--------------------------------------------- */
@@ -113,44 +114,49 @@
 
 
 
-@media (max-width:770px){
-
-    .first-two-agents{
+@media (min-width: 1024px) {
+    .first-two-agents, .second-two-agents {
         flex-direction: column;
-        margin-left: 0;
+        align-items: center;
     }
 
-    .agent-card{
-        margin-bottom: 2rem;
-        width: auto;
-        height: 100%;
+    .agent-card, .agent-card2 {
+        width: 90%; 
     }
-    .agent-card2{
-        margin-bottom: 2rem;
-        width: auto;
+
+    .agent-photo, .agent-photo2 {
+        width: 50%; 
+    }
+}
+
+
+@media (max-width: 640px) {
+    .first-two-agents, .second-two-agents {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .agent-card, .agent-card2 {
+        flex-direction: column; 
+        width: 100%; 
+    }
+
+    .agent-photo, .agent-photo2 {
+        width: 100%; 
         height: auto;
     }
 
-    .agent-photo{
-        height: 550px;
-        width: 40%;
-    }
-    .agent-photo2{
-        height: 550px;
-        width: 40%;
+    .agent-info, .agent-info2 {
+        padding: 1rem;
+        text-align: center;
     }
 
-    .agent-info2 p{
-        font-size: 1.1rem;
+    .agent-info h2, .agent-info2 h2 {
+        font-size: 2rem; 
     }
 
-    .agent-info p{
-        font-size: 1.1rem;
-    }
-
-    .second-two-agents{
-        flex-direction: column;
-        margin-left: 0;
+    .agent-info p, .agent-info2 p {
+        font-size: 1rem;
     }
 }
     
