@@ -61,37 +61,35 @@
 
 
 /* -------------------------------FEATURED PROPERTIES------------------------------------ */
+
 .featured-properties-container {
-  width: 90%;
+  width: 95%;
   margin: 0 auto;
   padding: 20px;
   margin-bottom: 10rem;
-  overflow: auto;
- 
+  
 }
-
 
 .section-title {
   font-size: 4rem;
   text-align: center;
   margin-bottom: 30px;
   color: #F2F2F2;
-  text-shadow: 3px 3px 3px #333333; 
+  text-shadow: 3px 3px 3px #333333;
 }
 
 .property-card {
-  background-color: #333333; 
+  background-color: #333333;
   border-radius: 10px;
   box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
   padding: 20px;
   text-align: center;
   transition: transform 0.3s ease;
-  height: 540px;
+
 }
 
 .property-card:hover {
   transform: translateY(-10px);
- 
 }
 
 .property-image {
@@ -102,26 +100,82 @@
 }
 
 .property-title {
-  font-size: 1.5rem;
+  font-size: 1.7rem;
   margin-top: 15px;
-  color: #D9D4C7; 
+  color: #D9D4C7;
 }
 
 .property-price {
   font-size: 1.25rem;
   margin-top: 10px;
-  color: #9C6B30; 
+  color: #9C6B30;
+}
+
+
+.property-features {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 10px;
+}
+
+.feature {
+  display: flex;
+  align-items: center;
+  font-size: 1.1rem;
+  color: #F2F2F2;
+}
+
+.feature i {
+  margin-right: 5px;
+  color: #9C6B30;
+  font-size: 1.5rem;
 }
 
 .property-description {
-  font-size: 1.1rem;
+  font-size: 1.5rem;
   margin-top: 10px;
-  color: #4C6A39; 
-  text-align: left;
+  color: #4C6A39;
+  text-align: center;
   width: auto;
   font-weight: 600;
 }
 
 
-
 /* -------------------------------FEATURED PROPERTIES------------------------------------ */
+
+
+/* ----------------------------------------MEDIA SECTION----------------------------------- */
+
+@media (max-width:770px) {
+
+  .section-title {
+    font-size: 2.8rem;
+  }
+
+  .property-card {
+    height: 500px;
+  
+  }
+
+  .property-description {
+    font-size: 1rem;
+  }
+   
+  .feature p{
+    font-size: 1rem;
+    padding: 0 3px;
+  }
+  .feature i{
+    font-size: .8rem;
+  }
+ 
+  .property-image{
+    height: 200px;
+  }
+
+}
+
+
+
+/* ----------------------------------------MEDIA SECTION----------------------------------- */
