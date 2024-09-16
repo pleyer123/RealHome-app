@@ -1,0 +1,123 @@
+
+.about-us-section {
+    
+    padding: 5rem 10rem;
+    margin-bottom: 10rem;
+  }
+  
+  .about-us-container{
+    box-shadow: 0 0 4px 4px black;
+    padding: 3rem;
+  }
+  .section-title {
+    font-size: 3.5rem;
+    text-align: center;
+    margin-bottom: 2rem;
+    color: #9C6B30;
+    text-shadow: 3px 3px 3px #333333;
+  }
+  
+  .about-description {
+    font-size: 1.25rem;
+    text-align: center;
+    margin-bottom: 3rem;
+    color: #333333;
+  }
+  
+  .mission-vision {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 4rem;
+  }
+  
+  .mission, .vision {
+    width: 45%;
+  }
+  
+  .mission h3, .vision h3 {
+    font-size: 2rem;
+    color: #9C6B30;
+    margin-bottom: 1rem;
+  }
+  
+  .mission p, .vision p {
+    font-size: 1.1rem;
+    color: #333333;
+    line-height: 1.6;
+  }
+  
+  
+  .values-section {
+    margin-bottom: 5rem;
+  }
+  
+  .values-section h3 {
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 2rem;
+    color: #9C6B30;
+  }
+  
+  .values-list {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #333333;
+  }
+  
+  .why-choose-us {
+    text-align: center;
+    margin-top: 5rem;
+  }
+  
+  .why-choose-us h3 {
+    font-size: 2.5rem;
+    color: #9C6B30;
+    margin-bottom: 2rem;
+  }
+  
+  .why-choose-us p {
+    font-size: 1.2rem;
+    color: #333333;
+    line-height: 1.6;
+  }
+  
+
+  @media (max-width: 1024px) {
+    .about-us-section {
+      padding: 3rem 5rem;
+    }
+  
+    .mission-vision {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .mission, .vision {
+      width: 100%;
+      margin-bottom: 2rem;
+    }
+  
+  
+  
+    .values-list {
+      text-align: center;
+    }
+  }
+  
+  @media (max-width: 640px) {
+    .about-us-section {
+      padding: 2rem 2rem;
+    }
+  
+    .section-title {
+      font-size: 2rem;
+    }
+  
+    .about-description, .mission p, .vision p, .why-choose-us p {
+      font-size: 1rem;
+      text-align: left;
+    }
+  
+  
+  }
+  

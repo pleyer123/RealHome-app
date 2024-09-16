@@ -82,7 +82,7 @@ const featuredProperties = [
 function FeaturedProperties() {
  
   return (
-    <div className="featured-properties-container">
+    <div className="featured-properties-container" id="fprop-container">
       <h2 className="section-title">Featured Properties</h2>
 
       <Swiper

@@ -19,8 +19,9 @@ function Hero(){
                 <ul className={isMobile ? "nav-links-mobile" : "nav-links"} onClick={() => setIsMobile(false)}>
                     <img src="app.logomakr.com/1JCVAQ" alt="" />
                     <li><a href="#">Home</a></li>
-                    <li><a href="#">Proporty Listings</a></li>
-                    <li><a href="#">About Us</a></li>
+                    <li><a href="#fprop-container">Proporty Listings</a></li>
+                    <li><a href="#Agents">Agents</a></li>
+                    <li><a href="#about-us">About Us</a></li>
                     <li><a href="#">Contact Us</a></li>
                 </ul>
                 <button className="mobile-menu-icon" onClick={() => setIsMobile(!isMobile)} >

@@ -145,13 +145,13 @@
 
   
     .agent-info p, .agent-info2 p {
-        font-size: 1.5rem; 
+        font-size: 1.2rem; 
         line-height: 1.8; 
     }
 
  
     .agent-info strong, .agent-info2 strong {
-        font-size: 1.6rem; 
+        font-size: 1.3rem; 
     }
 }
 
@@ -266,11 +266,15 @@
     }
 
     .agent-info p, .agent-info2 p {
-        font-size: 0.95rem;
+        font-size: 1rem;
+    }
+
+    .agent-info strong , .agent-info2 strong{
+        font-size: 1.2rem;
     }
 }
 
-/* Additional responsive adjustments for very small phones (up to 375px) */
+
 @media (max-width: 375px) {
     .agent-info h2, .agent-info2 h2 {
         font-size: 1.2rem;
