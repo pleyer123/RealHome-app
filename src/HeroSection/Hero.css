@@ -65,6 +65,13 @@ html{
     
 }
 
+.navbar img{
+    max-width:65px;
+    height: auto;
+    padding: 8px;
+    margin-right: 10rem;
+}
+
 .navbar li {
     position: relative;
 }
@@ -80,6 +87,10 @@ html{
     transform: scaleX(0); 
     transform-origin: left; 
     transition: transform 0.3s ease-out; 
+}
+
+.navbar .login-signup{
+    display: none;
 }
 
 .navbar li:hover::after {
@@ -223,142 +234,226 @@ html{
 
 /* -----------------------------MOBILE SECTION-------------------------------- */
 
-@media(max-width: 770px) {
+/* ------------------------------------------MOBILE SCREENS-------------------------------------------------------- */
+@media (max-width:320px) {
+    .navbar img{
+        margin-right: 12rem;
+    }   
     .nav-links {
         display: none;
     }
 
-    .hero-container{
-        height: 65rem;
-    }
-    
     .nav-links-mobile {
-      display: flex;
-      flex-direction: column;
-      position: absolute;
-      top: 60px;
-      left: 0;
-      width: 100%;
-      background-color: hsl(0, 0%, 5%);
-      z-index: 1;
-      height: auto;
-    }
-  
-    .navbar li::after{
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
         width: 100%;
-        transition: none;
-        left: 0;
-    }
-    .nav-links-mobile li {
-      padding: 20px;
-      text-align: center;
-    }
-  
-    .nav-links-mobile li a {
-      font-size: 1rem;
+        left:0;
+        background-color: hsl(0, 0%, 5%);
+        z-index: 1;
+        height: auto;
     }
 
-   
-   
-
-    .mobile-menu-icon {
-      display: block;
-      font-size: 1.4rem;
-      color: white;
-      background: none;
-      border: none;
-      cursor: pointer;
-      margin-left: 1rem;
-    }
-
-    .heading{
-        font-size: 1.8rem;
-        
-    }
-    
-    .sub-heading{
-        font-size: 1.2rem;
-        
-    }
-
-    .cta-button{
-        transform: scale(.7);
-        
-    }
-    .cta-button:hover{
-        transform: scale(.9);
-        transition: ease .25s;
-    }
-    .sign-up{
-        transform: scale(.8);
-        justify-content: flex-end;
-        margin-right: -1rem;
-    }
-
-    .login{
-        transform: scale(.8);
-        margin-right: -2rem;
-    }
-  }
-
-
-@media (min-width:430px) {
-    .heading{
-        font-size: 2.4rem;
-    }
-
-    .sub-heading{
+    .navbar li a:hover {
         font-size: 1.5rem;
     }
 
-    .cta-button{
-        transform: scale(.9);
+    .nav-links-mobile li {
+        padding: 20px;
+        text-align: center;
     }
+
+    .nav-links-mobile li a {
+        font-size: 1rem;
+    }
+
+    .mobile-menu-icon {
+        display: block;
+        font-size: 1.4rem;
+        color: white;
+        background: none;
+        border: none;
+        cursor: pointer;
+        margin-left: 1rem;
+    }
+
+    .sign-up, .login {
+        display: none;
+    }
+
+    .heading {
+        font-size: 1.4rem;
+    }
+
+    .sub-heading {
+        font-size: 1rem;
+    }
+
+    .cta-button {
+        transform: scale(0.6);
+        margin-top: 1rem;
+    }
+
     .cta-button:hover{
-        transform: scale(1);
+        transform: scale(0.8);
+        background-color: #333333;
     }
-    .hero-container{
+  
+    .navbar .login-signup{
+        background-color: #9C6B30;
+        display: flex; 
+        align-items: center; 
+        justify-content: center; 
+        gap: 5px; 
+        padding: 5px; 
+        border-radius: 3px; 
+        
+    }
+
+}
+
+
+@media (min-width: 375px) and (max-width:426px){
+    .nav-links {
+        display: none;
+    }
+
+    .nav-links-mobile {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        width: 110%;
+        background-color: hsl(0, 0%, 5%);
+        z-index: 1;
+        height: auto;
+    }
+
+    .navbar img{
+        margin-right: 15rem;
+    }
+    .navbar li a:hover {
+        font-size: 1.5rem;
+    }
+
+    .nav-links-mobile li {
+        padding: 20px;
+        text-align: center;
+    }
+
+    .nav-links-mobile li a {
+        font-size: 1rem;
+    }
+
+    .mobile-menu-icon {
+        display: block;
+        font-size: 1.4rem;
+        color: white;
+        background: none;
+        border: none;
+        cursor: pointer;
+        margin-left: 1rem;
+    }
+
+    .sign-up, .login {
+        display: none;
+    }
+
+    .heading {
+        font-size: 1.8rem;
+    }
+
+    .sub-heading {
+        font-size: 1.2rem;
+    }
+
+    .cta-button {
+        transform: scale(0.7);
+    }
+}
+
+
+@media (min-width: 431px) and (max-width: 768px) {
+    .navbar img {
+        margin-right: 10rem;
+    }
+
+    .heading {
+        font-size: 2.4rem;
+    }
+
+    .sub-heading {
+        font-size: 1.5rem;
+    }
+
+    .cta-button {
+        transform: scale(0.9);
+    }
+
+    .hero-container {
         height: 65rem;
     }
 }
 
 
-
-  @media (min-width:770px) {
-
-    .hero-container{
-        height: 65rem;
-    }
-
-    .navbar li a{
+@media (min-width: 769px) and (max-width: 1024px) {
+    .navbar li a {
         font-size: 1.1rem;
     }
 
-    .sign-up{
-        transform: scale(.8);
-        justify-content: flex-end;
-        margin-right: -1rem;
+    .navbar img {
+        margin-right: 5rem;
     }
 
-    .login{
-        transform: scale(.8);
-        margin-right: -2rem;
+    .heading {
+        font-size: 3rem;
     }
-    
-    .heading{
+
+    .sub-heading {
+        font-size: 1.8rem;
+    }
+
+    .cta-button {
+        transform: scale(1);
+    }
+}
+
+/* Large Laptops / Desktops (1025px to 1440px) */
+@media (min-width: 1025px) and (max-width: 1440px) {
+    .navbar li a {
+        font-size: 1.2rem;
+    }
+
+    .heading {
         font-size: 3.5rem;
     }
 
-    .sub-heading{
+    .sub-heading {
         font-size: 2rem;
     }
 
-    .cta-button{
+    .cta-button {
         transform: scale(1);
     }
+}
 
-    .cta-button:hover{
-        transform: scale(1.1);
+/* Extra Large Screens (1441px and above) */
+@media (min-width: 1441px) {
+    .navbar li a {
+        font-size: 1.3rem;
     }
-  }
+
+    .heading {
+        font-size: 4rem;
+    }
+
+    .sub-heading {
+        font-size: 2.5rem;
+    }
+
+    .cta-button {
+        transform: scale(1);
+    }
+}
 /* -----------------------------MOBILE SECTION-------------------------------- */
