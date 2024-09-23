@@ -370,7 +370,13 @@ html{
     }
 
     .cta-button {
-        transform: scale(0.7);
+        transform: scale(0.8);
+        margin-top: 1rem;
+    }
+
+    .cta-button:hover{
+        transform: scale(0.9);
+        background-color: #333333;
     }
     
     .navbar .login-signup{
@@ -389,36 +395,103 @@ html{
     .navbar img{
         margin-right: 19rem;
     }
+    .cta-button {
+        transform: scale(0.8);
+        margin-top: 1rem;
+    }
+
+    .cta-button:hover{
+        transform: scale(0.9);
+        background-color: #333333;
+    }
 }
 
 
 
 @media (min-width: 431px) and (max-width: 768px) {
-    .navbar img {
-        margin-right: 10rem;
+    
+    .nav-links {
+        display: none;
     }
 
-    .heading {
-        font-size: 2.4rem;
+    .nav-links-mobile {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        background-color: hsl(0, 0%, 5%);
+        z-index: 1;
+        height: auto;
     }
 
-    .sub-heading {
+    .navbar img{
+        margin-right: 39rem;
+    }
+    .navbar li a:hover {
         font-size: 1.5rem;
     }
 
-    .cta-button {
-        transform: scale(0.9);
+    .nav-links-mobile li {
+        padding: 20px;
+        text-align: center;
     }
 
-    .hero-container {
-        height: 65rem;
+    .nav-links-mobile li a {
+        font-size: 1rem;
     }
+
+    .mobile-menu-icon {
+        display: block;
+        font-size: 1.4rem;
+        color: white;
+        background: none;
+        border: none;
+        cursor: pointer;
+        margin-left: 1rem;
+    }
+
+    .sign-up, .login {
+        display: none;
+    }
+
+    .heading {
+        font-size: 2.5rem;
+    }
+
+    .sub-heading {
+        font-size: 1.6rem;
+    }
+
+    .cta-button {
+        transform: scale(1);
+        margin-top: 1rem;
+    }
+
+    .cta-button:hover{
+        transform: scale(1.2);
+        background-color: #333333;
+    }
+    
+    .navbar .login-signup{
+        background-color: #9C6B30;
+        display: flex; 
+        align-items: center; 
+        justify-content: center; 
+        padding: -10px;
+        border-radius: 3px; 
+        height: 35px;
+    }
+
 }
 
 
 @media (min-width: 769px) and (max-width: 1024px) {
     .navbar li a {
-        font-size: 1.1rem;
+        font-size: 1rem;
+        align-items: center;
+
     }
 
     .navbar img {
@@ -435,6 +508,27 @@ html{
 
     .cta-button {
         transform: scale(1);
+    }
+
+    .login-signup-container{
+        display: flex;
+        
+    }
+
+   
+    .login{
+        transform: scale(.8);
+        padding: 5px;
+        height: 40px;
+        margin-right: -4.8rem;
+    }
+
+    .sign-up{
+        transform: scale(.8);
+        padding: 5px;
+        height: 40px;
+        width: 100px;
+        margin-right: -1.2rem;
     }
 }
 
