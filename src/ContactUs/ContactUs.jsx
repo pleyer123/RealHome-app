@@ -24,12 +24,14 @@ function ContactUs(){
     
         if (res.success) {
             Swal.fire({
-                title: "Success!",
-                text: "Message has sent successfully!",
-                icon: "success"
+                position: "center",
+                icon: "success",
+                title: "Your message has been sent",
+                showConfirmButton: false,
+                timer: 1500
               });
-        }
       };
+    }
 
     
     
