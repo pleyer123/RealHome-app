@@ -1,20 +1,29 @@
-import Hero from "./HeroSection/Hero.jsx"
-import FeaturedProperties from "./Properties/FeaturedProperties.jsx"; 
-import "./App.css"
-import Agents from "./Agents/Agents.jsx";
-import AboutUs from "./AboutUs/AboutUs.jsx";
-import ContactUs from "./ContactUs/ContactUs.jsx";
-import Footer from "./Footer/Footer.jsx";
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Hero from "./HeroSection/Hero"; 
+import SignupPage from "./Registration/signUP";
+import LoginPage from "./Registration/Login"; 
+import ListingsPage from "./Listings/Listings"; 
+import './App.css'; 
+
 function App() {
-  return(<>
-  
-    <Hero/>
-    <FeaturedProperties/>
-    <Agents/>
-    <AboutUs/>
-    <ContactUs/>
-    <Footer/>
-  </>)
+  return (
+    <Router>
+      <Routes>
+        {/* Main Hero Section */}
+        <Route path="/" element={<Hero />} />
+
+        {/* Sign-Up Page */}
+        <Route path="/signUP" element={<SignupPage />} />
+
+        {/* Login Page */}
+        <Route path="/login" element={<LoginPage />} />
+
+        {/* Property Listings Page */}
+        <Route path="/Listings" element={<ListingsPage />} />
+      </Routes>
+    </Router>
+  );
 }
 
-export default App
+export default App;

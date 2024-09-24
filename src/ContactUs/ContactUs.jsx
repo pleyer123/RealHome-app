@@ -28,7 +28,7 @@ function ContactUs(){
                 icon: "success",
                 title: "Your message has been sent",
                 showConfirmButton: false,
-                timer: 1500
+                timer: 1000
               });
       };
     }
