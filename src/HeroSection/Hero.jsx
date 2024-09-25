@@ -1,16 +1,16 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom"; // Import useNavigate from react-router-dom
+import { useNavigate } from "react-router-dom"; 
 import "./Hero.css";
 
 function Hero() {
-  const navigate = useNavigate(); // For navigation between pages
+  const navigate = useNavigate(); 
 
   const propertySection = () => {
-    navigate("/Listings"); // Navigate to Listings page
+    navigate("/Listings"); 
   };
 
   const signUP = () => {
-    navigate("/signUP"); // Navigate to Sign-Up page
+    navigate("/signUP"); 
   };
 
   const [isMobile, setIsMobile] = useState(false);
