@@ -5,6 +5,7 @@ import SignupPage from "./Registration/signUP";
 import LoginPage from "./Registration/Login"; 
 import ListingsPage from "./Listings/Listings"; 
 import './App.css'; 
+import 'bootstrap/dist/css/bootstrap.min.css'
 
 function App() {
   return (
