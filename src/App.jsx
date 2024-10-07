@@ -11,7 +11,6 @@ import FeaturedProperties from "./Properties/FeaturedProperties";
 import AboutUs from "./AboutUs/AboutUs"
 import Footer from "./Footer/Footer"
 import ContactUs from "./ContactUs/ContactUs"
-// import 'bootstrap/dist/css/bootstrap.min.css'
 
 function HomePage(){
   return(

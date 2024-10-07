@@ -1,33 +1,19 @@
-import React, { useState, useEffect } from 'react';
-import propertiesData from './RealHome-Properties.json'; 
+import React, { useState } from 'react';
+import propertiesData from '../RealHome-Properties.json'; 
 import PropertyModal from './PropertyModal'; 
 import "./Listings.css";
 import Map from '../Map/Map';
+import Navbar from './Navbar'; // Import the Navbar
+import Footer from "../Footer/Footer"
 
 const Listings = () => {
   const [mapCenter, setMapCenter] = useState({ lat: 40.1215, lng: -100.4504 });
-  const [properties, setProperties] = useState(propertiesData);
   const [filteredProperties, setFilteredProperties] = useState(propertiesData); // Initialize with all properties
   const [selectedProperty, setSelectedProperty] = useState(null); // State for selected property
 
-  // Generate image URLs for properties
-  const generateImageUrls = () => {
-    return properties.map((property, index) => ({
-      ...property,
-      image: `https://via.placeholder.com/300x200?text=Property+${index + 1}`
-    }));
-  };
-
-  useEffect(() => {
-    setProperties(generateImageUrls());
-    setFilteredProperties(generateImageUrls());
-  }, []);
-
-  
-
   const handleFilterChange = (e) => {
     const { name, value } = e.target;
-    let filtered = properties;
+    let filtered = propertiesData;
 
     // Filter by location
     if (name === 'Location' && value) {
@@ -63,6 +49,8 @@ const Listings = () => {
 
   return (
     <>
+      <Navbar /> 
+
       <div className="listings-page">
         <h1 className="heading-listings">Find Your Dream Home</h1>
 
@@ -100,6 +88,8 @@ const Listings = () => {
 
         <Map center={mapCenter} containerStyle={{ width: '100%', height: '400px' }} />
 
+        <h1 className='heading-for-properties'>Properties for Sale</h1>
+
         <div className="properties-list">
           {filteredProperties.map(property => (
             <div key={property.id} className="property-item" onClick={() => openModal(property)}>
@@ -114,10 +104,11 @@ const Listings = () => {
         </div>
       </div>
       
-      {/* Render the Property Modal */}
       {selectedProperty && (
         <PropertyModal property={selectedProperty} onClose={closeModal} />
       )}
+
+      <Footer/>
     </>
   );
 };
