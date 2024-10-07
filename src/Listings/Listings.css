@@ -1,40 +1,110 @@
-body {
-  font-family: 'Arial', sans-serif;
-  margin: 0;
-  padding: 0;
-  background-color: #f8f8f8;
-}
 
+
+
+/* ----------------------NAVBAR--------------------- */
 .navbar {
+  background-color: #333333;
+  height: 60px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #333;
-  padding: 10px 20px;
+  padding: 0 20px;
+  position: relative;
+  z-index: 10;
+
+}
+
+.logo {
   color: #fff;
+  font-size: 1.5rem;
 }
 
-.navbar .nav-links {
-  list-style-type: none;
+.nav-links {
+  list-style: none;
   display: flex;
-  gap: 15px;
+  gap: 20px;
 }
 
-.navbar .nav-links li a {
-  color: white;
+.nav-links li a {
+  color: #F2F2F2;
   text-decoration: none;
+  font-size: 1.2rem;
+  transition: color 0.3s ease;
 }
 
-.listings-page {
-  padding: 20px;
+.nav-links li a:hover {
+  color: #4C6A39;
 }
 
-.heading-listings, .heading-for-properties {
-  color: #333;
+.navbar img {
+  max-width: 65px;
+  height: auto;
+}
+
+.mobile-menu-icon {
+  display: none;
+}
+
+.login-signup-container {
+  display: flex;
+  gap: 10px;
+}
+
+.login, .sign-up {
+  border: 1.5px solid white;
+  background-color: transparent;
+  color: #F2F2F2;
+  font-size: 1.2rem;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 5px 10px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.login:hover, .sign-up:hover {
+  background-color: #F2F2F2;
+  color: #9C6B30;
+}
+
+/* Mobile Navigation */
+.nav-links-mobile {
+  display: none;
+  flex-direction: column;
+  position: absolute;
+  top: 60px;
+  left: 0;
+  width: 100%;
+  background-color: #333333;
+  z-index: 1;
+}
+
+.nav-links-mobile li {
+  padding: 15px 0;
   text-align: center;
-  margin: 20px 0;
 }
 
+.nav-links-mobile li a {
+  font-size: 1rem;
+  color: #F2F2F2;
+}
+
+@media (max-width: 768px) {
+  .mobile-menu-icon {
+    display: block;
+    font-size: 1.4rem;
+    color: white;
+  }
+
+  .nav-links {
+    display: none; 
+  }
+
+  .nav-links-mobile {
+    display: flex; 
+  }
+}
+
+/* ----------------------FILTER SECTION--------------------- */
 .filter-section {
   display: flex;
   justify-content: center;
@@ -49,10 +119,13 @@ body {
   border: 1px solid #ccc;
 }
 
+/* ----------------------PROPERTIES LIST--------------------- */
 .properties-list {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
   gap: 20px;
+  padding: 10px;
+  margin-bottom: 5rem;
 }
 
 .property-item {
@@ -73,15 +146,70 @@ body {
   border-radius: 5px;
 }
 
+/* ----------------------MAP CONTAINER--------------------- */
+.MapContainer {
+  height: 500px;
+  width: 100vw;
+  margin-bottom: 15rem;
+}
 
-  .MapContainer{
-    height: 500px;
-    width: 100vw;
-    margin-bottom: 15rem;
+/* ----------------------HEADINGS--------------------- */
+.heading-listings, .heading-for-properties {
+  color: #333;
+  text-align: center;
+  margin: 20px 0;
+}
+
+.heading-for-properties {
+  font-size: 3rem;
+}
+
+/* ----------------------MEDIA QUERIES--------------------- */
+@media (max-width: 768px) {
+  .properties-list {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); 
   }
 
-  .heading-for-properties{
-    text-align: center;
-    font-size: 3rem;
-    margin-bottom: 2rem;
+  .MapContainer {
+    height: 300px; 
   }
+
+  .heading-for-properties {
+    font-size: 2.5rem; 
+  }
+
+  .filter-section {
+    flex-direction: column; 
+    align-items: center;
+  }
+
+  .filter-section select {
+    width: 100%; 
+  }
+
+  .mobile-menu-icon{
+    margin-left: -3rem;
+  }
+
+  .nav-links-mobile{
+    height: 20rem;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1440px) {
+  .navbar {
+    flex-direction: row;
+  }
+
+  .properties-list {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); 
+  }
+
+  .MapContainer {
+    height: 400px; 
+  }
+
+  .heading-for-properties {
+    font-size: 2.8rem; 
+  }
+}

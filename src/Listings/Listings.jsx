@@ -3,13 +3,15 @@ import propertiesData from '../RealHome-Properties.json';
 import PropertyModal from './PropertyModal'; 
 import "./Listings.css";
 import Map from '../Map/Map';
-import Navbar from './Navbar'; // Import the Navbar
+
 import Footer from "../Footer/Footer"
+import { useNavigate } from "react-router-dom"; 
+
 
 const Listings = () => {
   const [mapCenter, setMapCenter] = useState({ lat: 40.1215, lng: -100.4504 });
-  const [filteredProperties, setFilteredProperties] = useState(propertiesData); // Initialize with all properties
-  const [selectedProperty, setSelectedProperty] = useState(null); // State for selected property
+  const [filteredProperties, setFilteredProperties] = useState(propertiesData); 
+  const [selectedProperty, setSelectedProperty] = useState(null);
 
   const handleFilterChange = (e) => {
     const { name, value } = e.target;
@@ -47,21 +49,43 @@ const Listings = () => {
     setSelectedProperty(null);
   };
 
+  const [isMobile, setIsMobile] = useState(false);
+
+  const signUP = () => {
+    navigate("/signUP"); 
+  };
+
   return (
     <>
-      <Navbar /> 
+
+      <nav className="navbar">
+        <img src="./RealHomesWHITE.png" alt="Logo" />
+        <ul
+          className={isMobile ? "nav-links-mobile" : "nav-links"}
+          onClick={() => setIsMobile(false)}
+        >
+          <li><a href="/">Back Home</a></li>
+          <li><a href="#properties">Properties</a></li>
+          <li><a href="#contactUs">Contact Us</a></li>
+          <li><a className="login-signup" onClick={() => navigate("/login")}>Login</a></li>
+          <li><a className="login-signup" onClick={signUP}>Sign-Up</a></li>
+        </ul>
+        <button
+          className="mobile-menu-icon"
+          onClick={() => setIsMobile(!isMobile)}
+        >
+          {isMobile ? <i className="fas fa-times"></i> : <i className="fas fa-bars"></i>}
+        </button>
+        <div className="login-signup-container">
+          <button className="sign-up" onClick={signUP}>Sign Up</button>
+          <button className="login" onClick={() => navigate("/login")}>Login</button>
+        </div>
+      </nav>
 
       <div className="listings-page">
         <h1 className="heading-listings">Find Your Dream Home</h1>
 
         <div className="filter-section">
-          <select name="Location" onChange={handleFilterChange}>
-            <option value="">Select Location</option>
-            <option value="newyork">New York</option>
-            <option value="losangeles">Los Angeles</option>
-            <option value="chicago">Chicago</option>
-            <option value="sanfrancisco">San Francisco</option>
-          </select>
 
           <select name="PropertyType" onChange={handleFilterChange}>
             <option value="">Select Property Type</option>
@@ -90,7 +114,7 @@ const Listings = () => {
 
         <h1 className='heading-for-properties'>Properties for Sale</h1>
 
-        <div className="properties-list">
+        <div id ="properties" className="properties-list">
           {filteredProperties.map(property => (
             <div key={property.id} className="property-item" onClick={() => openModal(property)}>
               <img src={property.image} alt={property.title} />

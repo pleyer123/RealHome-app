@@ -105,7 +105,7 @@ html{
 .login-signup-container{
     padding: 15px;
     gap: 10px;
-    margin-right: 3rem;
+    margin-right: 8rem;
 }
 
 .login{
@@ -489,48 +489,48 @@ html{
 
 @media (min-width: 769px) and (max-width: 1024px) {
     .navbar li a {
-        font-size: 1rem;
-        align-items: center;
-
+      font-size: 1rem;
+      align-items: center;
     }
-
+  
     .navbar img {
-        margin-right: 5rem;
+      margin-right: 5rem;
     }
-
+  
     .heading {
-        font-size: 3rem;
+      font-size: 3rem;
     }
-
+  
     .sub-heading {
-        font-size: 1.8rem;
+      font-size: 1.8rem;
     }
-
+  
     .cta-button {
-        transform: scale(1);
+      transform: scale(1);
     }
-
-    .login-signup-container{
-        display: flex;
-        
+  
+    .login-signup-container {
+      display: flex;
+      margin-left: -6rem;
     }
-
-   
-    .login{
-        transform: scale(.8);
-        padding: 5px;
-        height: 40px;
-        margin-right: -4.8rem;
+  
+    .login {
+      transform: scale(0.8);
+      padding: 5px;
+      height: 40px;
+      margin-right: -4.8rem;
     }
-
-    .sign-up{
-        transform: scale(.8);
-        padding: 5px;
-        height: 40px;
-        width: 100px;
-        margin-right: -1.2rem;
+  
+    .sign-up {
+      transform: scale(0.8);
+      padding: 5px;
+      height: 40px;
+      width: 100px;
+      margin-right: -1.2rem;
+      font-size: 0.9rem; 
     }
-}
+  }
+  
 
 /* Large Laptops / Desktops (1025px to 1440px) */
 @media (min-width: 1025px) and (max-width: 1440px) {
