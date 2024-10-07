@@ -1,39 +1,79 @@
+
+
 .listings-page {
-    padding: 20px;
-    background-color: #F2F2F2; 
-  }
-  
-  .heading-listings {
-    font-size: 24px;
-    color: #333333; 
-    text-align: center;
-    margin-bottom: 20px;
-    
-  }
-  
-  .filter-section {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    margin-bottom: 20px;
-  }
-  
-  .filter-section select {
-    padding: 8px;
-    border: 1px solid #9C6B30; 
-    border-radius: 4px;
-    background-color: white;
-    color: #333333; 
-  }
-  
-  .filter-section select:focus {
-    outline: none;
-    border-color: #4C6A39;
-  }
+  padding: 20px;
+}
+
+.heading-listings {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333; 
+}
+
+.filter-section {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.filter-section select {
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  transition: border-color 0.3s;
+}
+
+.filter-section select:hover {
+  border-color: #666; 
+}
+
+.properties-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); 
+  gap: 20px;
+}
+
+.property-item {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  overflow: hidden;
+  text-align: center;
+  background-color: #fff; 
+  transition: transform 0.2s;
+}
+
+.property-item:hover {
+  transform: scale(1.03); 
+}
+
+.property-item img {
+  width: 100%;
+  height: auto;
+}
+
+.property-item h2 {
+  font-size: 1.2em;
+  margin: 10px 0;
+  color: #2c3e50; 
+}
+
+.property-item p {
+  margin: 5px 0;
+  color: #555; 
+}
 
   .MapContainer{
-    height: 100px;
+    height: 500px;
     width: 100vw;
-    
+    margin-bottom: 15rem;
   }
 
+.h1-for-properties{
+  text-align: center;
+  margin-bottom: 1.5rem;
+  font-size: 4rem;
+  color: black
+}
