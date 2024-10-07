@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { GoogleMap, LoadScript, Marker } from '@react-google-maps/api';
 import "./Listings.css";
+import Map from '../Map/Map';
 
 const Listings = () => {
   const [mapCenter, setMapCenter] = useState({ lat: 40.1215, lng: -100.4504 });
@@ -78,11 +79,12 @@ const Listings = () => {
       </select>
     </div>
 
-      <LoadScript googleMapsApiKey="AIzaSyCfy82Qimm4s7e2jTXNZ51JrMiKLWyVxn4">
+      {/* <LoadScript googleMapsApiKey="AIzaSyCfy82Qimm4s7e2jTXNZ51JrMiKLWyVxn4">
         <GoogleMap mapContainerStyle={containerStyle} center={mapCenter} zoom={6}>
           <Marker position={mapCenter} title="Selected Location" />
         </GoogleMap>
-      </LoadScript>
+      </LoadScript> */}
+      <Map  />
 
       <div className="properties-list">
         {properties.map(property => (
