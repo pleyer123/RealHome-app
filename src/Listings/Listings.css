@@ -1,0 +1,33 @@
+.listings-page {
+    padding: 20px;
+    background-color: #F2F2F2; 
+  }
+  
+  .heading-listings {
+    font-size: 24px;
+    color: #333333; 
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .filter-section {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .filter-section select {
+    padding: 8px;
+    border: 1px solid #9C6B30; 
+    border-radius: 4px;
+    background-color: white;
+    color: #333333; 
+  }
+  
+  .filter-section select:focus {
+    outline: none;
+    border-color: #4C6A39;
+  }
+  
+
