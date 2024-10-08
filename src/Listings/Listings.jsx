@@ -3,7 +3,7 @@ import propertiesData from '../RealHome-Properties.json';
 import PropertyModal from './PropertyModal'; 
 import "./Listings.css";
 import Map from '../Map/Map';
-
+import ContactUs from '../ContactUs/ContactUs';
 import Footer from "../Footer/Footer"
 import { useNavigate } from "react-router-dom"; 
 
@@ -49,6 +49,7 @@ const Listings = () => {
     setSelectedProperty(null);
   };
 
+  const navigate = useNavigate(); 
   const [isMobile, setIsMobile] = useState(false);
 
   const signUP = () => {
@@ -131,7 +132,7 @@ const Listings = () => {
       {selectedProperty && (
         <PropertyModal property={selectedProperty} onClose={closeModal} />
       )}
-
+      <ContactUs/>
       <Footer/>
     </>
   );

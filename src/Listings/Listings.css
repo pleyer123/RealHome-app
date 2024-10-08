@@ -191,9 +191,7 @@
     margin-left: -3rem;
   }
 
-  .nav-links-mobile{
-    height: 20rem;
-  }
+  
 }
 
 @media (min-width: 769px) and (max-width: 1440px) {

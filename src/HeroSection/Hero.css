@@ -314,7 +314,7 @@ html{
 }
 
 
-@media (min-width: 375px) and (max-width:426px){
+@media (min-width: 375px) and (max-width:424px){
     .nav-links {
         display: none;
     }
@@ -328,7 +328,7 @@ html{
         width: 100%;
         background-color: hsl(0, 0%, 5%);
         z-index: 1;
-        height: auto;
+        height: fit-content;
     }
 
     .navbar img{
@@ -403,6 +403,9 @@ html{
     .cta-button:hover{
         transform: scale(0.9);
         background-color: #333333;
+    }
+    .nav-links-mobile{
+        height: 800px;
     }
 }
 
@@ -529,6 +532,8 @@ html{
       margin-right: -1.2rem;
       font-size: 0.9rem; 
     }
+
+   
   }
   
 
@@ -539,7 +544,7 @@ html{
     }
 
     .heading {
-        font-size: 3.5rem;
+        font-size: 3.5rem; 
     }
 
     .sub-heading {
