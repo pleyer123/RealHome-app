@@ -314,7 +314,7 @@ html{
 }
 
 
-@media (min-width: 375px) and (max-width:424px){
+@media (min-width: 375px) and (max-width:425px){
     .nav-links {
         display: none;
     }
@@ -391,7 +391,7 @@ html{
 
 }
 
-@media (min-width:424px) and (max-width:425px){
+/* @media (min-width:424px) and (max-width:425px){
     .navbar img{
         margin-right: 19rem;
     }
@@ -407,7 +407,7 @@ html{
     .nav-links-mobile{
         height: 800px;
     }
-}
+} */
 
 
 

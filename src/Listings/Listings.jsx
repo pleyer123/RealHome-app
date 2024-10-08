@@ -111,7 +111,7 @@ const Listings = () => {
           </select>
         </div>
 
-        <Map center={mapCenter} containerStyle={{ width: '100%', height: '400px' }} />
+        <Map center={mapCenter} />
 
         <h1 className='heading-for-properties'>Properties for Sale</h1>
 

@@ -66,7 +66,7 @@
   color: #9C6B30;
 }
 
-/* Mobile Navigation */
+
 .nav-links-mobile {
   display: none;
   flex-direction: column;
@@ -75,7 +75,7 @@
   left: 0;
   width: 100%;
   background-color: #333333;
-  z-index: 1;
+  z-index: 1000;
 }
 
 .nav-links-mobile li {
@@ -88,21 +88,6 @@
   color: #F2F2F2;
 }
 
-@media (max-width: 768px) {
-  .mobile-menu-icon {
-    display: block;
-    font-size: 1.4rem;
-    color: white;
-  }
-
-  .nav-links {
-    display: none; 
-  }
-
-  .nav-links-mobile {
-    display: flex; 
-  }
-}
 
 /* ----------------------FILTER SECTION--------------------- */
 .filter-section {
@@ -120,6 +105,8 @@
 }
 
 /* ----------------------PROPERTIES LIST--------------------- */
+
+
 .properties-list {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
@@ -148,9 +135,10 @@
 
 /* ----------------------MAP CONTAINER--------------------- */
 .MapContainer {
-  height: 500px;
+  height: auto;
   width: 100vw;
   margin-bottom: 15rem;
+  z-index: 1;
 }
 
 /* ----------------------HEADINGS--------------------- */
@@ -165,7 +153,31 @@
 }
 
 /* ----------------------MEDIA QUERIES--------------------- */
+
 @media (max-width: 768px) {
+  .mobile-menu-icon {
+    display: block;
+    font-size: 1.4rem;
+    color: white;
+  }
+
+  .nav-links {
+    display: none; 
+  }
+
+  .nav-links-mobile {
+    display: flex; 
+    width: 100%;
+  }
+
+  .login-signup-container{
+    display: none;
+  }
+}
+
+
+
+@media (min-width:768) and (max-width: 769spx) {
   .properties-list {
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); 
   }
