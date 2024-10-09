@@ -6,9 +6,13 @@ import Map from '../Map/Map';
 import ContactUs from '../ContactUs/ContactUs';
 import Footer from "../Footer/Footer"
 import { useNavigate } from "react-router-dom"; 
-
+import supabase from '../CONFIG/supabaseClients';
 
 const Listings = () => {
+  console.log(supabase)
+
+
+
   const [mapCenter, setMapCenter] = useState({ lat: 40.1215, lng: -100.4504 });
   const [filteredProperties, setFilteredProperties] = useState(propertiesData); 
   const [selectedProperty, setSelectedProperty] = useState(null);
