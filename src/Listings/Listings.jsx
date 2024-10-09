@@ -1,49 +1,37 @@
-import React, { useState } from 'react';
-import propertiesData from '../RealHome-Properties.json'; 
+import React, { useState, useEffect } from 'react';
 import PropertyModal from './PropertyModal'; 
 import "./Listings.css";
 import Map from '../Map/Map';
 import ContactUs from '../ContactUs/ContactUs';
-import Footer from "../Footer/Footer"
+import Footer from "../Footer/Footer";
 import { useNavigate } from "react-router-dom"; 
 import supabase from '../CONFIG/supabaseClients';
+import PropertieCard from './ListingCard/ListingCard'; 
 
 const Listings = () => {
-  console.log(supabase)
-
-
-
-  const [mapCenter, setMapCenter] = useState({ lat: 40.1215, lng: -100.4504 });
-  const [filteredProperties, setFilteredProperties] = useState(propertiesData); 
+  const [fetchError, setFetchError] = useState(null);
+  const [properties, setProperties] = useState([]);
   const [selectedProperty, setSelectedProperty] = useState(null);
+  const [filters, setFilters] = useState({
+    type: '',
+    priceRange: '',
+  });
 
-  const handleFilterChange = (e) => {
-    const { name, value } = e.target;
-    let filtered = propertiesData;
+  useEffect(() => {
+    const fetchProperties = async () => {
+      const { data, error } = await supabase.from('Properties').select();
 
-    // Filter by location
-    if (name === 'Location' && value) {
-      filtered = filtered.filter(property => property.location.toLowerCase() === value.toLowerCase());
-    }
+      if (error) {
+        setFetchError('Could not fetch properties');
+        console.log(error);
+      } else {
+        setProperties(data);
+        setFetchError(null);
+      }
+    };
 
-    // Filter by type
-    if (name === 'PropertyType' && value) {
-      filtered = filtered.filter(property => property.type.toLowerCase() === value.toLowerCase());
-    }
-
-    // Filter by bedrooms
-    if (name === 'Bedrooms' && value) {
-      filtered = filtered.filter(property => property.bedrooms.toString() === value);
-    }
-
-    // Filter by price range
-    if (name === 'PriceRange' && value) {
-      const [min, max] = value.split('-').map(Number);
-      filtered = filtered.filter(property => property.price >= min && property.price <= max);
-    }
-
-    setFilteredProperties(filtered);
-  };
+    fetchProperties();
+  }, []);
 
   const openModal = (property) => {
     setSelectedProperty(property);
@@ -60,25 +48,33 @@ const Listings = () => {
     navigate("/signUP"); 
   };
 
+  const handleFilterChange = (e) => {
+    const { name, value } = e.target;
+    setFilters((prevFilters) => ({
+      ...prevFilters,
+      [name]: value,
+    }));
+  };
+
+  const filteredProperties = properties.filter(property => {
+    return (
+      (!filters.type || property.type === filters.type) &&
+      (!filters.priceRange || property.price <= parseInt(filters.priceRange))
+    );
+  });
+
   return (
     <>
-
       <nav className="navbar">
         <img src="./RealHomesWHITE.png" alt="Logo" />
-        <ul
-          className={isMobile ? "nav-links-mobile" : "nav-links"}
-          onClick={() => setIsMobile(false)}
-        >
+        <ul className={isMobile ? "nav-links-mobile" : "nav-links"} onClick={() => setIsMobile(false)}>
           <li><a href="/">Back Home</a></li>
           <li><a href="#properties">Properties</a></li>
           <li><a href="#contactUs">Contact Us</a></li>
           <li><a className="login-signup" onClick={() => navigate("/login")}>Login</a></li>
           <li><a className="login-signup" onClick={signUP}>Sign-Up</a></li>
         </ul>
-        <button
-          className="mobile-menu-icon"
-          onClick={() => setIsMobile(!isMobile)}
-        >
+        <button className="mobile-menu-icon" onClick={() => setIsMobile(!isMobile)}>
           {isMobile ? <i className="fas fa-times"></i> : <i className="fas fa-bars"></i>}
         </button>
         <div className="login-signup-container">
@@ -91,53 +87,42 @@ const Listings = () => {
         <h1 className="heading-listings">Find Your Dream Home</h1>
 
         <div className="filter-section">
-
-          <select name="PropertyType" onChange={handleFilterChange}>
-            <option value="">Select Property Type</option>
-            <option value="Apartment">Apartment</option>
-            <option value="House">House</option>
-            <option value="Condo">Condo</option>
+          <select name="type" onChange={handleFilterChange}>
+            <option value="">All Types</option>
+            <option value="house">House</option>
+            <option value="apartment">Apartment</option>
           </select>
-
-          <select name="Bedrooms" onChange={handleFilterChange}>
-            <option value="">Select Bedrooms</option>
-            <option value="1">1 Bedroom</option>
-            <option value="2">2 Bedrooms</option>
-            <option value="3">3 Bedrooms</option>
-            <option value="4">4+ Bedrooms</option>
-          </select>
-
-          <select name="PriceRange" onChange={handleFilterChange}>
-            <option value="">Select Price Range</option>
-            <option value="0-500000">$0 - $500,000</option>
-            <option value="500000-1000000">$500,000 - $1,000,000</option>
-            <option value="1000000-2000000">$1,000,000 - $2,000,000</option>
+          <select name="priceRange" onChange={handleFilterChange}>
+            <option value="">All Prices</option>
+            <option value="100000">Up to $100,000</option>
+            <option value="200000">Up to $200,000</option>
           </select>
         </div>
 
-        <Map center={mapCenter} />
-
+        <Map center={{ lat: 40.1215, lng: -100.4504 }} />
+        
         <h1 className='heading-for-properties'>Properties for Sale</h1>
 
-        <div id ="properties" className="properties-list">
-          {filteredProperties.map(property => (
-            <div key={property.id} className="property-item" onClick={() => openModal(property)}>
-              <img src={property.image} alt={property.title} />
-              <h2>{property.title}</h2>
-              <p>Location: {property.location}</p>
-              <p>Price: ${property.price.toLocaleString()}</p>
-              <p>Bedrooms: {property.bedrooms}</p>
-              <p>Type: {property.type}</p>
-            </div>
-          ))}
+        <div id="properties" className="properties-list">
+          {filteredProperties.length > 0 ? (
+            filteredProperties.map(property => (
+              <PropertieCard 
+                key={property.id} 
+                properties={property} 
+                openModal={openModal} // Ensure the modal opens on click
+              />
+            ))
+          ) : (
+            <p>No properties available at the moment.</p>
+          )}
         </div>
       </div>
-      
+
       {selectedProperty && (
         <PropertyModal property={selectedProperty} onClose={closeModal} />
       )}
-      <ContactUs/>
-      <Footer/>
+      <ContactUs />
+      <Footer />
     </>
   );
 };

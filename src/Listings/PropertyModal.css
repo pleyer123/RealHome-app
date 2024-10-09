@@ -4,7 +4,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.8);
+  background-color: rgba(0, 0, 0, 0.7);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -12,70 +12,29 @@
 }
 
 .modal-content {
-  background: #fff;
-  border-radius: 8px;
+  background: white;
   padding: 20px;
-  max-width: 800px;
-  width: 90%;
-  display: flex;
+  border-radius: 8px;
+  position: relative;
+  max-width: 600px; /* Set max-width to make it look better */
+  width: 90%; /* Allow it to take full width on smaller screens */
 }
 
 .close-button {
-  background: #ff4d4d;
-  color: white;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
   border: none;
-  border-radius: 4px;
-  padding: 5px 10px;
+  font-size: 1.5rem;
   cursor: pointer;
-  margin-left: auto;
 }
 
 .modal-slider {
-  flex: 1;
+  margin-bottom: 20px;
 }
 
 .property-image {
   width: 100%;
-  height: auto;
-  margin-left: 10px;
-  
+  height: auto; /* Maintain aspect ratio */
 }
-
-.property-details {
-  flex: 1;
-  padding: 20px;
-  
-}
-
-.property-details h2 {
-  margin-bottom: 10px;
-}
-
-.property-details h3{
-  margin-top: 1rem;
-}
-.property-details form {
-  display: flex;
-  flex-direction: column;
-}
-
-.property-details input, .property-details textarea {
-  margin-bottom: 10px;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-}
-
-.property-details button {
-  background: #007BFF;
-  color: white;
-  border: none;
-  padding: 10px;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.property-details button:hover {
-  background: #0056b3;
-}
-
