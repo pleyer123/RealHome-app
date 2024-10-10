@@ -56,18 +56,20 @@ const Listings = () => {
     }));
   };
 
+  // Updated filteredProperties logic
   const filteredProperties = properties.filter(property => {
+    const priceRangeValue = parseInt(filters.priceRange);
     return (
       (!filters.type || property.type === filters.type) &&
-      (!filters.priceRange || property.price <= parseInt(filters.priceRange))
+      (!filters.priceRange || property.price <= priceRangeValue)
     );
   });
 
   return (
     <>
       <nav className="navbar">
-        <img src="./RealHomesWHITE.png" alt="Logo" />
-        <ul className={isMobile ? "nav-links-mobile" : "nav-links"} onClick={() => setIsMobile(false)}>
+        <img src="./RealHomesWHITE.png" alt="Logo" className="logo"/>
+        <ul className={isMobile ? "nav-links-mobile open" : "nav-links"} onClick={() => setIsMobile(false)}>
           <li><a href="/">Back Home</a></li>
           <li><a href="#properties">Properties</a></li>
           <li><a href="#contactUs">Contact Us</a></li>
@@ -96,11 +98,19 @@ const Listings = () => {
             <option value="">All Prices</option>
             <option value="100000">Up to $100,000</option>
             <option value="200000">Up to $200,000</option>
+            <option value="300000">Up to $300,000</option>
+            <option value="400000">Up to $400,000</option>
+            <option value="500000">Up to $500,000</option>
+            <option value="1000000">Up to $1,000,000</option>
+            <option value="2000000">Up to $2,000,000</option>
+            <option value="3000000">Up to $3,000,000</option>
+            <option value="4000000">Up to $4,000,000</option>
+            <option value="5000000">Up to $5,000,000</option>
           </select>
         </div>
 
-        <Map center={{ lat: 40.1215, lng: -100.4504 }} />
-        
+        <Map center={{ lat: 40.1215, lng: -100.4504 }} className="map-container"/>
+
         <h1 className='heading-for-properties'>Properties for Sale</h1>
 
         <div id="properties" className="properties-list">
