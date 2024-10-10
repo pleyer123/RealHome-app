@@ -12,29 +12,59 @@
 }
 
 .modal-content {
-  background: white;
+  background-color: #fff;
+  border-radius: 10px;
   padding: 20px;
-  border-radius: 8px;
+  width: 90%; /* Responsive width */
+  max-width: 600px; /* Max width */
   position: relative;
-  max-width: 600px; /* Set max-width to make it look better */
-  width: 90%; /* Allow it to take full width on smaller screens */
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
 }
 
 .close-button {
   position: absolute;
   top: 10px;
   right: 10px;
-  background: none;
   border: none;
+  background: none;
   font-size: 1.5rem;
   cursor: pointer;
 }
 
 .modal-slider {
-  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 15px;
 }
 
 .property-image {
   width: 100%;
-  height: auto; /* Maintain aspect ratio */
+  height: auto;
+  border-radius: 10px;
+}
+
+.property-details {
+  margin: 10px 0;
+}
+
+input, textarea {
+  width: 100%; 
+  padding: 10px;
+  margin: 5px 0; 
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+button[type="submit"] {
+  background-color: #4C6A39;
+  color: #fff;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button[type="submit"]:hover {
+  background-color: #3b5a2e; 
 }
