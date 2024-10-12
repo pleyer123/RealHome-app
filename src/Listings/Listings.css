@@ -101,9 +101,9 @@
 /* ----------------------PROPERTIES LIST--------------------- */
 .properties-list {
   display: flex;
-  flex-wrap: wrap; /* Allows cards to wrap to the next line */
-  justify-content: center; /* Centers the cards horizontally */
-  gap: 30px; /* Space between the cards */
+  flex-wrap: wrap; 
+  justify-content: center; 
+  gap: 30px; 
 }
 
 .properties-list .property-card {
@@ -111,9 +111,9 @@
   border: 1px solid #ccc;
   padding: 15px;
   border-radius: 10px;
-  width: calc(50% - 30px); /* Two cards per row with gap consideration */
+  width: calc(50% - 30px); 
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  box-sizing: border-box; /* Prevent overflow inside the card */
+  box-sizing: border-box; 
 }
 
 /* ----------------------MAP STYLES--------------------- */
@@ -123,53 +123,49 @@
   margin: 20px 0;
 }
 
-/* Responsive adjustments for smaller screens */
-@media (max-width: 768px) {
-  .properties-list .property-card {
-    width: calc(100% - 30px); /* Full width on smaller screens */
-  }
-
-  .nav-links {
-    display: none;
-  }
-
-  .mobile-menu-icon {
-    display: block;
-    font-size: 2rem;
-    color: #F2F2F2;
-    cursor: pointer;
-    margin-left: -.5rem;
-  }
-
-  .nav-links-mobile {
-    display: none;
-    flex-direction: column;
-    position: absolute;
-    top: 60px;
-    left: 0;
-    width: 100%;
-    background-color: #333333;
-    z-index: 1000;
-  }
-
-  .nav-links-mobile li {
-    padding: 15px 0;
-    text-align: center;
-  }
-
-  .nav-links-mobile li a {
-    font-size: 1.2rem;
-    color: #F2F2F2;
-  }
-
-  .nav-links-mobile.open {
-    display: flex;
-  }
+/* ----------------------FORM STYLES--------------------- */
+.page-create {
+  padding: 20px;
+  background-color: #F2F2F2; 
+  border-radius: 5px;
 }
 
-@media (max-width: 576px) {
-  .heading-listings,
-  .heading-for-properties {
-    font-size: 1rem;
-  }
+.page-create form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 20px;
+}
+
+.page-create input,
+.page-create select {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.page-create button {
+  padding: 10px;
+  background-color: #4C6A39;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.page-create button:hover {
+  background-color: #9C6B30;
+}
+
+/* ----------------------CONTACT US AND FOOTER--------------------- */
+footer {
+  background-color: #333333;
+  color: #F2F2F2;
+  padding: 20px;
+  text-align: center;
+}
+
+footer a {
+  color: #F2F2F2;
+  text-decoration: none;
 }

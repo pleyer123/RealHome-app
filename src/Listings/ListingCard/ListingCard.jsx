@@ -4,7 +4,7 @@ import './ListingCard.css';
 const PropertieCard = ({ properties, openModal }) => {
   return (
     <div className="property-item" onClick={() => openModal(properties)}>
-      <img src={properties.image} alt={properties.title} />
+      <img src={properties.image_url} alt={properties.title} />
       <h2>{properties.title}</h2>
       <p><strong>Location:</strong> {properties.location}</p>
       <p><strong>Price:</strong> ${properties.price.toLocaleString()}</p>

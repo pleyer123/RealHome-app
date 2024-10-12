@@ -4,13 +4,13 @@
   justify-content: space-between;
   gap: 20px;
   margin: 20px 0;
-  padding: 0; /* Ensure no extra padding */
-  overflow-x: hidden; /* Prevent horizontal scroll */
+  padding: 0; 
+  overflow-x: hidden; 
 }
 
 .property-column {
-  flex: 0 0 calc(50% - 10px); /* Two properties per row on larger screens */
-  margin-bottom: 20px; /* Add bottom margin to avoid overlap */
+  flex: 0 0 calc(50% - 10px); 
+  margin-bottom: 20px;
 }
 
 .property-item {
@@ -21,10 +21,11 @@
   cursor: pointer;
   transition: transform 0.2s;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  height: 400px; /* Fixed height to keep cards consistent */
+  height: 600px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  width: 900px;
 }
 
 .property-item:hover {
@@ -33,27 +34,35 @@
 
 .property-item img {
   width: 100%;
-  height: 200px; /* Keeps image size consistent */
-  object-fit: cover; /* Ensures images are nicely cropped */
+  height: 400px; 
+  object-fit: cover; 
 }
 
 /* ----------------------RESPONSIVE DESIGN--------------------- */
 @media (max-width: 1024px) {
   .property-column {
-    flex: 0 0 calc(50% - 10px); /* Two properties per row for tablets */
+    flex: 0 0 calc(50% - 10px); 
   }
 }
 
 @media (max-width: 768px) {
   .property-column {
-    flex: 0 0 calc(100% - 20px); /* One property per row for mobile */
+    flex: 0 0 calc(100% - 20px); 
   }
 
   .property-item {
-    height: auto; /* Remove fixed height for better fit on smaller screens */
+    height: auto; 
   }
 
   .property-item img {
-    height: auto; /* Adjust image height to fit content */
+    height: auto; 
+  }
+}
+
+
+@media (min-width:1440px) {
+  .property-item{
+    margin-left: 15rem;
+    
   }
 }

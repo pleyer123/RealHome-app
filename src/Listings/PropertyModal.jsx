@@ -16,7 +16,7 @@ const PropertyModal = ({ property, onClose }) => {
       <div className="modal-content">
         <button className="close-button" onClick={onClose}>X</button>
         <div className="modal-slider">
-          <img src={property.image} alt={property.title} className="property-image" />
+          <img src={property.image_url} alt={property.title} className="property-image" />
         </div>
         <div className="property-details">
           <h2>{property.title}</h2>

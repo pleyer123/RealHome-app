@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import PropertyModal from './PropertyModal'; 
-import "./Listings.css";
+import PropertyModal from './PropertyModal';
+import './Listings.css';
 import Map from '../Map/Map';
 import ContactUs from '../ContactUs/ContactUs';
-import Footer from "../Footer/Footer";
-import { useNavigate } from "react-router-dom"; 
+import Footer from '../Footer/Footer';
+import { useNavigate } from 'react-router-dom';
 import supabase from '../CONFIG/supabaseClients';
-import PropertieCard from './ListingCard/ListingCard'; 
+import PropertieCard from './ListingCard/ListingCard';
+import CreatePropertyForm from './CreatePropertyForm';
 
 const Listings = () => {
   const [fetchError, setFetchError] = useState(null);
@@ -16,11 +17,14 @@ const Listings = () => {
     type: '',
     priceRange: '',
   });
+  const [isMobile, setIsMobile] = useState(false);
+
+  const navigate = useNavigate();
+
 
   useEffect(() => {
     const fetchProperties = async () => {
       const { data, error } = await supabase.from('Properties').select();
-
       if (error) {
         setFetchError('Could not fetch properties');
         console.log(error);
@@ -33,19 +37,20 @@ const Listings = () => {
     fetchProperties();
   }, []);
 
+  const filteredProperties = properties.filter((property) => {
+    const priceRangeValue = parseInt(filters.priceRange);
+    return (
+      (!filters.type || property.type === filters.type) &&
+      (!filters.priceRange || property.price <= priceRangeValue)
+    );
+  });
+
   const openModal = (property) => {
     setSelectedProperty(property);
   };
 
   const closeModal = () => {
     setSelectedProperty(null);
-  };
-
-  const navigate = useNavigate(); 
-  const [isMobile, setIsMobile] = useState(false);
-
-  const signUP = () => {
-    navigate("/signUP"); 
   };
 
   const handleFilterChange = (e) => {
@@ -56,38 +61,54 @@ const Listings = () => {
     }));
   };
 
-  // Updated filteredProperties logic
-  const filteredProperties = properties.filter(property => {
-    const priceRangeValue = parseInt(filters.priceRange);
-    return (
-      (!filters.type || property.type === filters.type) &&
-      (!filters.priceRange || property.price <= priceRangeValue)
-    );
-  });
+  const signUP = () => {
+    navigate('/signUP');
+  };
 
   return (
     <>
+ 
       <nav className="navbar">
-        <img src="./RealHomesWHITE.png" alt="Logo" className="logo"/>
-        <ul className={isMobile ? "nav-links-mobile open" : "nav-links"} onClick={() => setIsMobile(false)}>
-          <li><a href="/">Back Home</a></li>
-          <li><a href="#properties">Properties</a></li>
-          <li><a href="#contactUs">Contact Us</a></li>
-          <li><a className="login-signup" onClick={() => navigate("/login")}>Login</a></li>
-          <li><a className="login-signup" onClick={signUP}>Sign-Up</a></li>
+        <img src="./RealHomesWHITE.png" alt="Logo" className="logo" />
+        <ul className={isMobile ? 'nav-links-mobile open' : 'nav-links'} onClick={() => setIsMobile(false)}>
+          <li>
+            <a href="/">Back Home</a>
+          </li>
+          <li>
+            <a href="#properties">Properties</a>
+          </li>
+          <li>
+            <a href="#contactUs">Contact Us</a>
+          </li>
+          <li>
+            <a className="login-signup" onClick={() => navigate('/login')}>
+              Login
+            </a>
+          </li>
+          <li>
+            <a className="login-signup" onClick={signUP}>
+              Sign-Up
+            </a>
+          </li>
         </ul>
         <button className="mobile-menu-icon" onClick={() => setIsMobile(!isMobile)}>
           {isMobile ? <i className="fas fa-times"></i> : <i className="fas fa-bars"></i>}
         </button>
         <div className="login-signup-container">
-          <button className="sign-up" onClick={signUP}>Sign Up</button>
-          <button className="login" onClick={() => navigate("/login")}>Login</button>
+          <button className="sign-up" onClick={signUP}>
+            Sign Up
+          </button>
+          <button className="login" onClick={() => navigate('/login')}>
+            Login
+          </button>
         </div>
       </nav>
 
+      
       <div className="listings-page">
         <h1 className="heading-listings">Find Your Dream Home</h1>
 
+        
         <div className="filter-section">
           <select name="type" onChange={handleFilterChange}>
             <option value="">All Types</option>
@@ -102,35 +123,30 @@ const Listings = () => {
             <option value="400000">Up to $400,000</option>
             <option value="500000">Up to $500,000</option>
             <option value="1000000">Up to $1,000,000</option>
-            <option value="2000000">Up to $2,000,000</option>
-            <option value="3000000">Up to $3,000,000</option>
-            <option value="4000000">Up to $4,000,000</option>
-            <option value="5000000">Up to $5,000,000</option>
           </select>
         </div>
 
-        <Map center={{ lat: 40.1215, lng: -100.4504 }} className="map-container"/>
+        
+        <Map center={{ lat: 40.1215, lng: -100.4504 }} className="map-container" />
 
-        <h1 className='heading-for-properties'>Properties for Sale</h1>
-
+        
+        <h1 className="heading-for-properties">Properties for Sale</h1>
         <div id="properties" className="properties-list">
           {filteredProperties.length > 0 ? (
-            filteredProperties.map(property => (
-              <PropertieCard 
-                key={property.id} 
-                properties={property} 
-                openModal={openModal} // Ensure the modal opens on click
-              />
+            filteredProperties.map((property) => (
+              <PropertieCard key={property.id} properties={property} openModal={openModal} />
             ))
           ) : (
             <p>No properties available at the moment.</p>
           )}
         </div>
+
+        {selectedProperty && <PropertyModal property={selectedProperty} onClose={closeModal} />}
+
+      
+        <CreatePropertyForm />
       </div>
 
-      {selectedProperty && (
-        <PropertyModal property={selectedProperty} onClose={closeModal} />
-      )}
       <ContactUs />
       <Footer />
     </>
