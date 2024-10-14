@@ -1,0 +1,44 @@
+.edit-property-modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+  }
+  
+  .edit-property-modal h2 {
+    margin-bottom: 10px;
+  }
+  
+  .edit-property-modal form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .edit-property-modal input,
+  .edit-property-modal textarea,
+  .edit-property-modal select {
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .edit-property-modal button {
+    padding: 10px;
+    background-color: #4C6A39; 
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 1rem;
+  }
+  
+  .edit-property-modal button:hover {
+    background-color: #3f5932; 
+  }
+  

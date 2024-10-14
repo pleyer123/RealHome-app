@@ -1,76 +1,32 @@
-import React, { useCallback, useEffect, useState } from 'react';
-import * as L from 'leaflet';
-import 'leaflet/dist/leaflet.css';
-import { getCoordinates } from './geocoding';
+import React, { useEffect } from 'react';
+import L from 'leaflet';
 
-function Map({ properties, openModal }) {
-  const location = {
-    lat: 37.38605,
-    lng: -122.08385,
-  };
-
-  const [map, setMap] = useState(null);
-
-  const mapRef = useCallback((mapContainer) => {
-    if (!mapContainer) return;
-
-    // If a map already exists, we do not need to create a new one
-    if (map) {
-      return;
-    }
-
-    // Clear the container and create a new Leaflet map instance
-    mapContainer.innerHTML = '';
-
-    const leafmap = L.map(mapContainer).setView([location.lat, location.lng], 14);
-
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      maxZoom: 19,
-      attribution: '© OpenStreetMap',
-    }).addTo(leafmap);
-
-    setMap(leafmap);
-  }, [map]);
-
+const Map = ({ coordinates }) => {
   useEffect(() => {
-    if (map) {
-      // Clear existing markers if necessary
-      const markers = [];
+    const mapContainer = document.getElementById('map');
 
-      properties.forEach(async (property) => {
-        if (property.city) {
-          const coordinates = await getCoordinates(property.city);
-          if (coordinates) {
-            const marker = L.marker(coordinates, {
-              icon: L.icon({
-                iconUrl: '/assets/icon-location.svg',
-                iconSize: [46, 56],
-              }),
-            }).addTo(map);
+    // Check if the map container already has the map initialized
+    if (!mapContainer._leaflet_id) { // This check prevents re-initialization
+      const map = L.map('map').setView([coordinates.lat, coordinates.lng], 12);
 
-            // Open modal on marker click
-            marker.on('click', () => {
-              openModal(property);
-            });
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+      }).addTo(map);
 
-            // Store marker in an array for potential cleanup
-            markers.push(marker);
-          }
-        }
+      const marker = L.marker([coordinates.lat, coordinates.lng]).addTo(map);
+      marker.bindPopup("<b>Property Location</b>").openPopup();
+
+      // Fly to the location after initialization
+      map.flyTo([coordinates.lat, coordinates.lng], 16, {
+        duration: 2, // Smooth zoom transition over 2 seconds
       });
-
-      // Cleanup function to remove markers if needed (optional)
-      return () => {
-        markers.forEach(marker => {
-          map.removeLayer(marker);
-        });
-      };
     }
-  }, [map, properties, openModal]);
+
+  }, [coordinates]);
 
   return (
-    <main className="map-container" ref={mapRef}></main>
+    <div id="map" style={{ height: "100%", width: "100%" }}></div>
   );
-}
+};
 
 export default Map;

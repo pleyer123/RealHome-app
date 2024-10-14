@@ -1,26 +1,24 @@
 import React, { useState, useEffect } from 'react';
 import PropertyModal from './PropertyModal';
 import './Listings.css';
-import Map from '../Map/Map';
 import ContactUs from '../ContactUs/ContactUs';
 import Footer from '../Footer/Footer';
 import { useNavigate } from 'react-router-dom';
 import supabase from '../CONFIG/supabaseClients';
 import PropertieCard from './ListingCard/ListingCard';
 import CreatePropertyForm from './CreatePropertyForm';
-import { getCoordinates } from '../Map/geocoding';
+import EditPropertyForm from './EditPropertyForm'; 
 
 const Listings = () => {
-  const [fetchError, setFetchError] = useState(null);
   const [properties, setProperties] = useState([]);
   const [selectedProperty, setSelectedProperty] = useState(null);
+  const [editProperty, setEditProperty] = useState(null); 
   const [filters, setFilters] = useState({
     type: '',
     priceRange: '',
   });
   const [isMobile, setIsMobile] = useState(false);
-  const [mapCoordinates, setMapCoordinates] = useState([]);
-  const [showForm, setShowForm] = useState(false); // State to control form visibility
+  const [showForm, setShowForm] = useState(false);
 
   const navigate = useNavigate();
 
@@ -28,19 +26,9 @@ const Listings = () => {
     const fetchProperties = async () => {
       const { data, error } = await supabase.from('Properties').select();
       if (error) {
-        setFetchError('Could not fetch properties');
-        console.log(error);
+        console.error('Could not fetch properties', error);
       } else {
         setProperties(data);
-        setFetchError(null);
-
-        const coordinatesPromises = data.map(async (property) => {
-          const coords = await getCoordinates(property.city);
-          return coords;
-        });
-
-        const coordinates = await Promise.all(coordinatesPromises);
-        setMapCoordinates(coordinates);
       }
     };
 
@@ -76,7 +64,25 @@ const Listings = () => {
   };
 
   const toggleForm = () => {
-    setShowForm((prevShowForm) => !prevShowForm); 
+    setShowForm((prevShowForm) => !prevShowForm);
+  };
+
+  const onDelete = async (propertyId) => {
+    const { error } = await supabase.from('Properties').delete().eq('id', propertyId);
+    if (error) {
+      console.error('Error deleting property:', error);
+    } else {
+      setProperties((prevProperties) => prevProperties.filter((property) => property.id !== propertyId));
+    }
+  };
+
+  const onUpdate = (property) => {
+    setEditProperty(property); // Set the property to be edited
+  };
+
+  const handleUpdateSuccess = () => {
+    
+    fetchProperties(); 
   };
 
   return (
@@ -139,21 +145,35 @@ const Listings = () => {
           </select>
         </div>
 
-        {/* <Map properties={filteredProperties} coordinates={mapCoordinates} openModal={openModal} className="map-container" /> */}
-
         <h1 className="heading-for-properties">Properties for Sale</h1>
         <div id="properties" className="properties-list">
           {filteredProperties.length > 0 ? (
             filteredProperties.map((property) => (
-              <PropertieCard key={property.id} properties={property} openModal={openModal} />
+              <PropertieCard
+                key={property.id}
+                properties={property}
+                openModal={openModal}
+                onUpdate={onUpdate}
+                onDelete={onDelete}
+              />
             ))
           ) : (
             <p>No properties available at the moment.</p>
           )}
         </div>
+        
         {selectedProperty && (
-      <PropertyModal property={selectedProperty} onClose={closeModal} />
-    )}
+          <PropertyModal property={selectedProperty} onClose={closeModal} />
+        )}
+
+        {editProperty && (
+          <EditPropertyForm
+            property={editProperty}
+            onClose={() => setEditProperty(null)} 
+            onUpdateSuccess={handleUpdateSuccess} 
+          />
+        )}
+
         <button onClick={toggleForm} className='button-add'>
           {showForm ? 'Close Property Form' : 'Add New Property'}
         </button>

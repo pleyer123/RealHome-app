@@ -11,30 +11,39 @@
   z-index: 1000;
 }
 
+.modal-body {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
 .modal-content {
-  background-color: #fff;
-  border-radius: 10px;
-  padding: 20px;
-  width: 90%; /* Responsive width */
-  max-width: 600px; /* Max width */
+  background-color: white;
+  padding: 25px;
+  max-width: 950px; /* Slightly wider modal */
+  margin: 0 auto;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
   position: relative;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
 }
 
 .close-button {
   position: absolute;
-  top: 10px;
-  right: 10px;
+  top: 15px;
+  right: 15px;
   border: none;
   background: none;
   font-size: 1.5rem;
+  color: #333;
   cursor: pointer;
+  z-index: 1000;
 }
 
 .modal-slider {
   display: flex;
   justify-content: center;
-  margin-bottom: 15px;
+  margin-bottom: 20px;
 }
 
 .property-image {
@@ -43,28 +52,43 @@
   border-radius: 10px;
 }
 
-.property-details {
-  margin: 10px 0;
+.property-details-container {
+  flex: 1;
+  padding-right: 25px; /* More space between form and map */
+}
+
+.map-container {
+  flex: 1;
+  height: 800px; 
+  border-radius: 10px;
+  overflow: hidden;
 }
 
 input, textarea {
-  width: 100%; 
-  padding: 10px;
-  margin: 5px 0; 
+  width: 100%;
+  padding: 12px;
+  margin: 8px 0;
   border: 1px solid #ccc;
-  border-radius: 5px;
+  border-radius: 6px;
+  font-size: 1rem;
 }
 
 button[type="submit"] {
   background-color: #4C6A39;
-  color: #fff;
+  color: white;
   border: none;
-  padding: 10px;
-  border-radius: 5px;
+  padding: 12px;
+  border-radius: 6px;
   cursor: pointer;
   transition: background-color 0.3s;
+  width: 100%;
+  font-size: 1rem;
 }
 
 button[type="submit"]:hover {
-  background-color: #3b5a2e; 
+  background-color: #3b5a2e;
+}
+
+button[type="submit"]:active {
+  background-color: #36542b;
 }
