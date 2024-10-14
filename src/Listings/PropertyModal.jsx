@@ -1,5 +1,7 @@
 import React from 'react';
 import './PropertyModal.css';
+import Map from '../Map/Map';
+
 
 const PropertyModal = ({ property, onClose }) => {
   if (!property) return null;
@@ -18,6 +20,7 @@ const PropertyModal = ({ property, onClose }) => {
         <div className="modal-slider">
           <img src={property.image_url} alt={property.title} className="property-image" />
         </div>
+        <Map/>
         <div className="property-details">
           <h2>{property.title}</h2>
           <p><strong>Location:</strong> {property.location}</p>
@@ -33,6 +36,7 @@ const PropertyModal = ({ property, onClose }) => {
             <textarea placeholder="Your Message" required></textarea>
             <button type="submit">Send Request</button>
           </form>
+          
         </div>
       </div>
     </div>

@@ -1,8 +1,9 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import * as L from 'leaflet';
-import 'leaflet/dist/leaflet.css'; // Make sure to import Leaflet CSS
+import 'leaflet/dist/leaflet.css';
+import { getCoordinates } from './geocoding';
 
-function Map() {
+function Map({ properties, openModal }) {
   const location = {
     lat: 37.38605,
     lng: -122.08385,
@@ -13,38 +14,62 @@ function Map() {
   const mapRef = useCallback((mapContainer) => {
     if (!mapContainer) return;
 
-    // Clear any previous map instances
+    // If a map already exists, we do not need to create a new one
+    if (map) {
+      return;
+    }
+
+    // Clear the container and create a new Leaflet map instance
     mapContainer.innerHTML = '';
 
-    // Initialize the map and set its view
     const leafmap = L.map(mapContainer).setView([location.lat, location.lng], 14);
 
-    // Add tile layer to the map
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       maxZoom: 19,
       attribution: '© OpenStreetMap',
     }).addTo(leafmap);
 
-    // Set the map state
     setMap(leafmap);
-  }, []);
+  }, [map]);
 
   useEffect(() => {
     if (map) {
-      // Set marker on the map
-      const marker = L.marker([location.lat, location.lng], {
-        icon: L.icon({
-          iconUrl: '/assets/icon-location.svg',
-          iconSize: [46, 56],
-        }),
-      }).addTo(map);
+      // Clear existing markers if necessary
+      const markers = [];
+
+      properties.forEach(async (property) => {
+        if (property.city) {
+          const coordinates = await getCoordinates(property.city);
+          if (coordinates) {
+            const marker = L.marker(coordinates, {
+              icon: L.icon({
+                iconUrl: '/assets/icon-location.svg',
+                iconSize: [46, 56],
+              }),
+            }).addTo(map);
+
+            // Open modal on marker click
+            marker.on('click', () => {
+              openModal(property);
+            });
+
+            // Store marker in an array for potential cleanup
+            markers.push(marker);
+          }
+        }
+      });
+
+      // Cleanup function to remove markers if needed (optional)
+      return () => {
+        markers.forEach(marker => {
+          map.removeLayer(marker);
+        });
+      };
     }
-  }, [map, location]);
+  }, [map, properties, openModal]);
 
   return (
-    <main className="MapContainer" ref={mapRef}>
-      {/* Ensure CSS is applied for dimensions */}
-    </main>
+    <main className="map-container" ref={mapRef}></main>
   );
 }
 

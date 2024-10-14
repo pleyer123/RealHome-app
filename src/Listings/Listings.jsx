@@ -8,6 +8,7 @@ import { useNavigate } from 'react-router-dom';
 import supabase from '../CONFIG/supabaseClients';
 import PropertieCard from './ListingCard/ListingCard';
 import CreatePropertyForm from './CreatePropertyForm';
+import { getCoordinates } from '../Map/geocoding';
 
 const Listings = () => {
   const [fetchError, setFetchError] = useState(null);
@@ -18,9 +19,10 @@ const Listings = () => {
     priceRange: '',
   });
   const [isMobile, setIsMobile] = useState(false);
+  const [mapCoordinates, setMapCoordinates] = useState([]);
+  const [showForm, setShowForm] = useState(false); // State to control form visibility
 
   const navigate = useNavigate();
-
 
   useEffect(() => {
     const fetchProperties = async () => {
@@ -31,6 +33,14 @@ const Listings = () => {
       } else {
         setProperties(data);
         setFetchError(null);
+
+        const coordinatesPromises = data.map(async (property) => {
+          const coords = await getCoordinates(property.city);
+          return coords;
+        });
+
+        const coordinates = await Promise.all(coordinatesPromises);
+        setMapCoordinates(coordinates);
       }
     };
 
@@ -65,9 +75,12 @@ const Listings = () => {
     navigate('/signUP');
   };
 
+  const toggleForm = () => {
+    setShowForm((prevShowForm) => !prevShowForm); 
+  };
+
   return (
     <>
- 
       <nav className="navbar">
         <img src="./RealHomesWHITE.png" alt="Logo" className="logo" />
         <ul className={isMobile ? 'nav-links-mobile open' : 'nav-links'} onClick={() => setIsMobile(false)}>
@@ -104,16 +117,16 @@ const Listings = () => {
         </div>
       </nav>
 
-      
       <div className="listings-page">
         <h1 className="heading-listings">Find Your Dream Home</h1>
 
-        
         <div className="filter-section">
           <select name="type" onChange={handleFilterChange}>
             <option value="">All Types</option>
             <option value="house">House</option>
             <option value="apartment">Apartment</option>
+            <option value="condo">Condo</option>
+            <option value="ranch">Ranch</option>
           </select>
           <select name="priceRange" onChange={handleFilterChange}>
             <option value="">All Prices</option>
@@ -126,10 +139,8 @@ const Listings = () => {
           </select>
         </div>
 
-        
-        <Map center={{ lat: 40.1215, lng: -100.4504 }} className="map-container" />
+        {/* <Map properties={filteredProperties} coordinates={mapCoordinates} openModal={openModal} className="map-container" /> */}
 
-        
         <h1 className="heading-for-properties">Properties for Sale</h1>
         <div id="properties" className="properties-list">
           {filteredProperties.length > 0 ? (
@@ -140,11 +151,15 @@ const Listings = () => {
             <p>No properties available at the moment.</p>
           )}
         </div>
+        {selectedProperty && (
+      <PropertyModal property={selectedProperty} onClose={closeModal} />
+    )}
+        <button onClick={toggleForm} className='button-add'>
+          {showForm ? 'Close Property Form' : 'Add New Property'}
+        </button>
 
-        {selectedProperty && <PropertyModal property={selectedProperty} onClose={closeModal} />}
+        {showForm && <CreatePropertyForm />}
 
-      
-        <CreatePropertyForm />
       </div>
 
       <ContactUs />
