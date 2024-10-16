@@ -62,6 +62,7 @@ const EditPropertyForm = ({ property, onClose, onUpdateSuccess }) => {
           <option value="apartment">Apartment</option>
           <option value="condo">Condo</option>
           <option value="ranch">Ranch</option>
+          <option value="villa">Villa</option>
         </select>
         <button type="submit">Update Property</button>
         <button type="button" onClick={onClose}>Cancel</button>

@@ -13,6 +13,7 @@ const CreatePropertyForm = ({ propertyId }) => {
   const [formError, setFormError] = useState(null);
   const [image, setImage] = useState(null);
   const [previewImage, setPreviewImage] = useState(null);
+  
   const navigate = useNavigate();
 
   // Load property data for editing if propertyId is provided
@@ -107,27 +108,31 @@ const CreatePropertyForm = ({ propertyId }) => {
       image_url: imageUrl,
     };
 
-    let result;
     if (propertyId) {
-      const { data, error } = await supabase
+      const { error } = await supabase
         .from('Properties')
         .update(propertyData)
-        .eq('id', propertyId)
-        .select();
+        .eq('id', propertyId);
 
-      result = { data, error };
+      if (error) {
+        console.error('Error updating property:', error);
+        setFormError('Error updating property');
+        return;
+      }
+
+      console.log('Property updated successfully');
     } else {
-      const { data, error } = await supabase
+      const { error } = await supabase
         .from('Properties')
         .insert([propertyData]);
 
-      result = { data, error };
-    }
+      if (error) {
+        console.error('Error adding property:', error);
+        setFormError('Error adding property');
+        return;
+      }
 
-    if (result.error) {
-      console.error('Failed to add/update property:', result.error);
-      setFormError('Failed to add/update property');
-      return;
+      console.log('Property added successfully');
     }
 
     // Reset form fields
@@ -142,8 +147,8 @@ const CreatePropertyForm = ({ propertyId }) => {
     setPreviewImage(null);
     setFormError(null);
 
-    console.log('Property added/updated successfully:', result.data);
-    navigate('/'); // Redirect to the properties page
+    // Reload the page after successful form submission
+    window.location.reload(); // This forces a reload of the page
   };
 
   const handleDelete = async () => {
@@ -162,7 +167,7 @@ const CreatePropertyForm = ({ propertyId }) => {
     }
 
     console.log('Property deleted successfully:', data);
-    navigate('/'); // Redirect after deletion
+    navigate('/');  // Redirect to homepage after deletion
   };
 
   return (
@@ -202,8 +207,15 @@ const CreatePropertyForm = ({ propertyId }) => {
 
         {formError && <p style={{ color: 'red' }}>{formError}</p>}
 
-        <button type="submit">Add/Update Property</button>
-        {propertyId && <button type="button" onClick={handleDelete} style={{ backgroundColor: 'red', color: 'white' }}>Delete Property</button>}
+        <button type="submit">
+          {propertyId ? 'Update Property' : 'Add Property'}
+        </button>
+      
+        {propertyId && (
+          <button type="button" onClick={handleDelete} style={{ backgroundColor: 'red', color: 'white' }}>
+            Delete Property
+          </button>
+        )}
       </form>
     </div>
   );

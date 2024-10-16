@@ -1,78 +1,17 @@
-import React from 'react'
-import "./SignUp.css"
-import { useNavigate } from 'react-router-dom'
-import axios from 'axios'
-import { useState } from 'react'
+import React from 'react';
+import LoginButton from './COMPONENTS/LoginButton'; // Adjust this path if needed
+import LogOutButton from './COMPONENTS/LogOutButton'; // Adjust this path if needed
+import './SignUp.css'; // Optional, if you have a separate CSS file for styling the sign-up page
 
-const SignUp = () => {
-
-  const navigate = useNavigate(); 
-
-  const loginClick = () => {
-    navigate("/login");
-  }
-
-  const backClick = () => {
-    navigate("/")
-  }
-
-   const [name, setName] = useState()
-   const [email, setEmail] = useState()
-   const [password, setPassword] = useState()
-
-   const handleSubmit = (e) =>{
-    e.preventDefault()
-    axios.post('http://localhost:5173/register',{name,email,password})
-    .then(result => console.log(result))
-    .catch(err=> console.log(err))
-   }
-
+function SignUp() {
   return (
     <div className="signup-container">
-    <h2>Sign Up</h2>
-    <form  className="signup-form" onSubmit={handleSubmit}>
-      <div className="input-group">
-        <label htmlFor="fullName">Full Name</label>
-        <input
-          type="text"
-          id="fullName"
-          name="fullName"
-          onChange={(e) => setName(e.target.value)} 
-          required
-        />
-      </div>
-      
-      <div className="input-group">
-        <label htmlFor="email">Email</label>
-        <input
-          type="email"
-          id="email"
-          name="email"
-          onChange={(e) => setEmail(e.target.value)} 
-          required
-        />
-      </div>
-      
-      <div className="input-group">
-        <label htmlFor="password">Password</label>
-        <input
-          type="password"
-          id="password"
-          name="password"
-          onChange={(e) => setPassword(e.target.value)} 
-          required
-        />
-      </div>
-      
-      <button type="submit" className="signup-button">Sign Up</button>
-
-      <p className='p-tag'>Already Have an Account</p>
-    
-    </form>
-    <button type='submit' className='login-button' onClick={loginClick}>Login</button>
-    <button type='submit' className='back-button' onClick={backClick}>Back Home</button>
-  </div>
-  )
+      <h1>Sign Up / Login Page</h1>
+      {/* Login and Logout buttons */}
+      <LoginButton />
+      <LogOutButton />
+    </div>
+  );
 }
 
-export default SignUp
+export default SignUp;

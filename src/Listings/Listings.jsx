@@ -117,9 +117,7 @@ const Listings = () => {
           <button className="sign-up" onClick={signUP}>
             Sign Up
           </button>
-          <button className="login" onClick={() => navigate('/login')}>
-            Login
-          </button>
+     
         </div>
       </nav>
 

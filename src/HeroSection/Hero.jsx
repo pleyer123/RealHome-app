@@ -39,7 +39,7 @@ function Hero() {
         </button>
         <div className="login-signup-container">
           <button className="sign-up" onClick={signUP}>Sign Up</button>
-          <button className="login" onClick={() => navigate("/login")}>Login</button>
+ 
         </div>
       </nav>
 
