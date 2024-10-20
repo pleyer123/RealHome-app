@@ -9,7 +9,7 @@
   position: relative;
   z-index: 10;
   width: 100%;
-  box-sizing: border-box; /* Prevent overflow */
+  box-sizing: border-box; 
 }
 
 .logo {
@@ -32,10 +32,7 @@
   transition: background-color 0.3s ease;
 }
 
-.nav-links li a:hover {
-  background-color: #4C6A39;
-  border-radius: 5px;
-}
+
 
 .mobile-menu-icon {
   display: none;
@@ -174,13 +171,7 @@ footer a {
 }
 
 @media (min-width: 768px) and (max-width:769px){
-  .nav-links {
-    display: none; 
-  }
 
-  .mobile-menu-icon {
-    display: block; 
-  }
 
   .button-add{
     margin-left: 5.5rem;

@@ -8,6 +8,9 @@ import supabase from '../CONFIG/supabaseClients';
 import PropertieCard from './ListingCard/ListingCard';
 import CreatePropertyForm from './CreatePropertyForm';
 import EditPropertyForm from './EditPropertyForm'; 
+import { useAuth0 } from "@auth0/auth0-react";
+import '../Navbar.css'
+
 
 const Listings = () => {
   const [properties, setProperties] = useState([]);
@@ -83,6 +86,8 @@ const Listings = () => {
     fetchProperties(); 
   };
 
+  const {loginWithRedirect,isAuthenticated, user,logout} = useAuth0()
+
   return (
     <>
       <nav className="navbar">
@@ -103,12 +108,15 @@ const Listings = () => {
         <button className="mobile-menu-icon" onClick={() => setIsMobile(!isMobile)}>
           {isMobile ? <i className="fas fa-times"></i> : <i className="fas fa-bars"></i>}
         </button>
-        {/* <div className="login-signup-container">
-          <button className="sign-up" onClick={signUP}>
-            Sign Up
-          </button>
-     
-        </div> */}
+         {/* Login */}
+         {
+              !isAuthenticated?
+ 
+              <button className="sign-up" onClick={loginWithRedirect}>
+                Sign Up
+              </button> :
+             <ProfileMenu user={user} logout={logout}/>
+            }
       </nav>
 
       <div className="listings-page">
