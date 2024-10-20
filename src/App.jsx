@@ -8,7 +8,7 @@ import FeaturedProperties from "./Properties/FeaturedProperties";
 import AboutUs from "./AboutUs/AboutUs";
 import Footer from "./Footer/Footer";
 import ContactUs from "./ContactUs/ContactUs";
-import SignUp from "./Registration/signUP"; // Import the new SignUp component
+
 
 function HomePage(){
   return(
@@ -29,8 +29,8 @@ function App() {
       <Routes>
         {/* Main Hero Section */}
         <Route path="/" element={<HomePage />} />
-        {/* Sign-Up Page */}
-        <Route path="/signUP" element={<SignUp />} />
+        
+   
         {/* Property Listings Page */}
         <Route path="/Listings" element={<ListingsPage />} />
       </Routes>

@@ -391,23 +391,6 @@ html{
 
 }
 
-/* @media (min-width:424px) and (max-width:425px){
-    .navbar img{
-        margin-right: 19rem;
-    }
-    .cta-button {
-        transform: scale(0.8);
-        margin-top: 1rem;
-    }
-
-    .cta-button:hover{
-        transform: scale(0.9);
-        background-color: #333333;
-    }
-    .nav-links-mobile{
-        height: 800px;
-    }
-} */
 
 
 

@@ -59,9 +59,7 @@ const Listings = () => {
     }));
   };
 
-  const signUP = () => {
-    navigate('/signUP');
-  };
+
 
   const toggleForm = () => {
     setShowForm((prevShowForm) => !prevShowForm);
@@ -99,26 +97,18 @@ const Listings = () => {
           <li>
             <a href="#contactUs">Contact Us</a>
           </li>
-          <li>
-            <a className="login-signup" onClick={() => navigate('/login')}>
-              Login
-            </a>
-          </li>
-          <li>
-            <a className="login-signup" onClick={signUP}>
-              Sign-Up
-            </a>
-          </li>
+        
+        
         </ul>
         <button className="mobile-menu-icon" onClick={() => setIsMobile(!isMobile)}>
           {isMobile ? <i className="fas fa-times"></i> : <i className="fas fa-bars"></i>}
         </button>
-        <div className="login-signup-container">
+        {/* <div className="login-signup-container">
           <button className="sign-up" onClick={signUP}>
             Sign Up
           </button>
      
-        </div>
+        </div> */}
       </nav>
 
       <div className="listings-page">

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom"; 
 import "./Hero.css";
+import { useAuth0 } from "@auth0/auth0-react";
 
 function Hero() {
   const navigate = useNavigate(); 
@@ -9,11 +10,12 @@ function Hero() {
     navigate("/Listings"); 
   };
 
-  const signUP = () => {
-    navigate("/signUP"); 
-  };
+
 
   const [isMobile, setIsMobile] = useState(false);
+
+  const {loginWithRedirect,isAuthenticated, user,logout} = useAuth0()
+  
 
   return (
     <div className="hero-container">
@@ -28,8 +30,7 @@ function Hero() {
           <li><a href="#Agents">Agents</a></li>
           <li><a href="#about-us">About Us</a></li>
           <li><a href="#contactUs">Contact Us</a></li>
-          <li><a className="login-signup" onClick={() => navigate("/login")}>Login</a></li>
-          <li><a className="login-signup" onClick={signUP}>Sign-Up</a></li>
+
         </ul>
         <button
           className="mobile-menu-icon"
@@ -37,10 +38,16 @@ function Hero() {
         >
           {isMobile ? <i className="fas fa-times"></i> : <i className="fas fa-bars"></i>}
         </button>
-        <div className="login-signup-container">
-          <button className="sign-up" onClick={signUP}>Sign Up</button>
+
+         {/* Login */}
+         {
+              !isAuthenticated?
  
-        </div>
+              <button className="sign-up" onClick={loginWithRedirect}>
+                Sign Up
+              </button> :
+             <ProfileMenu user={user} logout={logout}/>
+            }
       </nav>
 
       <h1 className="heading">Welcome To RealHome</h1>
