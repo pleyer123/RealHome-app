@@ -3,12 +3,12 @@ import PropertyModal from './PropertyModal';
 import './Listings.css';
 import ContactUs from '../ContactUs/ContactUs';
 import Footer from '../Footer/Footer';
-import { useNavigate } from 'react-router-dom';
 import supabase from '../CONFIG/supabaseClients';
 import PropertieCard from './ListingCard/ListingCard';
 import CreatePropertyForm from './CreatePropertyForm';
 import EditPropertyForm from './EditPropertyForm'; 
 import { useAuth0 } from "@auth0/auth0-react";
+import ProfileMenu from '../PROFILE/ProfileMenu';
 import '../Navbar.css'
 
 
@@ -23,7 +23,7 @@ const Listings = () => {
   const [isMobile, setIsMobile] = useState(false);
   const [showForm, setShowForm] = useState(false);
 
-  const navigate = useNavigate();
+
 
   useEffect(() => {
     const fetchProperties = async () => {

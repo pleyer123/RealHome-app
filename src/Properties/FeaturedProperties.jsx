@@ -4,6 +4,7 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "./FeaturedProperties.css"
 import SwiperButtons from "./SwiperButtons.jsx";
+import { useNavigate } from "react-router-dom"; 
 
 
 const featuredProperties = [
@@ -79,8 +80,18 @@ const featuredProperties = [
   }
 ];
 
+
+
 function FeaturedProperties() {
- 
+
+  
+  const navigate = useNavigate()
+
+  const listings = () => {
+    navigate("/Listings"); 
+  };
+
+
   return (
     <div className="featured-properties-container" id="fprop-container">
       <h2 className="section-title">Featured Properties</h2>
@@ -134,6 +145,7 @@ function FeaturedProperties() {
           </SwiperSlide>
         ))}
       </Swiper>
+      <button className="listings-button" onClick={listings}>Get Your Dream Home</button>
 
 
     </div>

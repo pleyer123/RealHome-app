@@ -5,6 +5,32 @@
 }
 
 /* -------------------------------SLIDER BUTTONS------------------------------------ */
+
+.listings-button{
+  width: 300px;
+  height: 80px;
+  font-size: 1.4rem;
+  background-color: #9C6B30;
+  color: white;
+  border-radius: 10px;
+  outline: none;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 65rem;
+  margin-top: .5rem;
+  font-weight: 600;
+  padding: 0 .3rem;
+}
+
+.listings-button:hover{
+  background-color: #4C6A39;
+  transform: scale(1.05);
+  transition: background-color .25s ease;
+}
+
+
 .slider-buttons {
   display: flex;
   margin-bottom: 10rem;
@@ -149,7 +175,29 @@
 
 /* ----------------------------------------MEDIA SECTION----------------------------------- */
 
-@media (max-width:770px) {
+@media (min-width:320px) and (max-width:321px){
+  .listings-button{
+    margin-left: -1rem;
+    transform: scale(.8);
+  }
+
+}
+@media (min-width:375px) and (max-width:376px){
+  .listings-button{
+    margin-left: .5rem;
+    transform: scale(.8);
+  }
+
+}
+@media (min-width:425px) and (max-width:426px){
+  .listings-button{
+    margin-left: 2rem;
+    transform: scale(.8);
+  }
+
+}
+
+@media(min-width:426px) and (max-width:770px) {
 
   .section-title {
     font-size: 2.8rem;
@@ -176,6 +224,12 @@
     height: 200px;
   }
 
+  .listings-button{
+    margin-left: 0;
+    transform: scale(.8);
+  }
+
+  
 }
 
 @media (min-width:770px) and (max-width:1024px) {
@@ -183,6 +237,11 @@
   .property-card{
     height: 45rem;
 
+  }
+  .listings-button{
+    margin-left: 19rem;
+
+    transform: scale(.8);
   }
   
 }

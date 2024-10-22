@@ -10,7 +10,7 @@
     z-index: 10;
     width: 100%;
     box-sizing: border-box;
-    overflow: hidden;
+    
   }
   
   .navbar img{
@@ -74,7 +74,20 @@
     display: none;
   }
 
- 
+ .sign-up{
+    margin-right: 10rem;
+    margin-left: -1rem;
+    background-color: #333333;
+    font-size: 1.3rem;
+    color: white;
+    padding: 5px 5px;
+    border: 2px solid white;
+    font-weight: 500;
+ }
+
+ .sign-up:hover{
+    background-color: #9C6B30;
+ }
   
   /* -----------------------------MOBILE SECTION-------------------------------- */
   @media (max-width: 768px) {
