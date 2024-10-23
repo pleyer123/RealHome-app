@@ -1,28 +1,22 @@
-import React, { StrictMode } from 'react'; // Import StrictMode here
-import { createRoot } from 'react-dom/client';
+import React from 'react'; 
+import ReactDOM from 'react-dom/client'
 import { Auth0Provider } from '@auth0/auth0-react';
 import App from './App.jsx';
 import './HeroSection/Hero.css';
 
-// Replace these with your actual Auth0 domain and client ID
-const domain = import.meta.env.VITE_AUTH0_DOMAIN;
-const clientId = import.meta.env.VITE_AUTH0_CLIENT_ID;
 
-console.log("Auth0 Domain:", domain);
-console.log("Auth0 Client ID:", clientId);
-
-createRoot(document.getElementById('root')).render(
-  <StrictMode>
+ReactDOM.createRoot(document.getElementById('root')).render(
+  <React.StrictMode>
     <Auth0Provider
-      domain={domain}
-      clientId={clientId}
+      domain="dev-qz7a5av7sksmr4qs.us.auth0.com"
+      clientId="ua319xDQDqXc0aiJXQjdAyYw2wFmO20A"
       authorizationParams={{
-        redirect_uri: window.location.origin
+        redirect_uri:"http://localhost:5173"
       }}
     scope='openid profile email'
     >
       <App />
     </Auth0Provider>
-  </StrictMode>
+  </React.StrictMode>
 );
 

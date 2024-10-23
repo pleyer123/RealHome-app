@@ -4,6 +4,10 @@ import "./Hero.css";
 import { useAuth0 } from "@auth0/auth0-react";
 import '../Navbar.css';
 import ProfileMenu from "../PROFILE/ProfileMenu";
+
+
+
+
 function Hero() {
   const navigate = useNavigate(); 
   const { loginWithRedirect, isAuthenticated, user, logout } = useAuth0();
