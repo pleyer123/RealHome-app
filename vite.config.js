@@ -6,7 +6,7 @@ export default defineConfig({
   plugins: [react()],
   build: {
     rollupOptions: {
-      external: ['@supabase/supabase-js', 'geocoding.js'],
+      external: ['@supabase/supabase-js', 'opencage-api-client'],
     },
   },
   server: {

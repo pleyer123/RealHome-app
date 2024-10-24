@@ -6,7 +6,7 @@ export const getCoordinates = async (city) => {
         return null;
     }
 
-    const apiKey = 'b7f8541c51694e5b89a1e358988ca9d4'; // Replace with your actual API key
+    const apiKey = 'b7f8541c51694e5b89a1e358988ca9d4'; 
     try {
         const response = await openCage.geocode({ q: city, key: apiKey });
         if (response.results.length > 0) {
