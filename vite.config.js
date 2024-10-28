@@ -3,6 +3,7 @@ import react from '@vitejs/plugin-react';
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  base: '/',
   plugins: [react()],
   build: {
     rollupOptions: {
@@ -10,8 +11,7 @@ export default defineConfig({
     },
   },
   server: {
-    port: 5173, // Ensure this matches your setup
-    cors: true, // Enable CORS if necessary
+    port: 5173,
+    cors: true,
   },
-  // No need to define `process.env`. Vite uses import.meta.env directly
 });
