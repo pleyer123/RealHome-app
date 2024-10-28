@@ -7,7 +7,7 @@ export default defineConfig({
   plugins: [react()],
   build: {
     rollupOptions: {
-      external: ['@supabase/supabase-js', 'opencage-api-client'],
+      external: ['@supabase/supabase-js'],
     },
   },
   server: {

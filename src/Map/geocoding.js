@@ -1,4 +1,4 @@
-import openCage from 'opencage-api-client';
+import opencage from 'opencage-api-client';
 
 export const getCoordinates = async (city) => {
     if (!city) {
@@ -8,7 +8,7 @@ export const getCoordinates = async (city) => {
 
     const apiKey = 'b7f8541c51694e5b89a1e358988ca9d4'; 
     try {
-        const response = await openCage.geocode({ q: city, key: apiKey });
+        const response = await opencage.geocode({ q: city, key: apiKey });
         if (response.results.length > 0) {
             return {
                 lat: response.results[0].geometry.lat,
