@@ -127,7 +127,8 @@
     }
   
     .sign-up {
-      display: none;
+      display: contents;
+      
     }
   }
   

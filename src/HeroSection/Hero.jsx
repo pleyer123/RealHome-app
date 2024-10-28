@@ -28,10 +28,6 @@ function Hero() {
           <li><a href="#about-us">About Us</a></li>
           <li><a href="#contactUs">Contact Us</a></li>
         </ul>
-        <button className="mobile-menu-icon" onClick={() => setIsMobile(!isMobile)}>
-          {isMobile ? <i className="fas fa-times"></i> : <i className="fas fa-bars"></i>}
-        </button>
-
         {/* Login */}
         {
           !isAuthenticated ? (
@@ -40,6 +36,10 @@ function Hero() {
             <ProfileMenu user={user} logout={logout}/>
           )
         }
+        <button className="mobile-menu-icon" onClick={() => setIsMobile(!isMobile)}>
+          {isMobile ? <i className="fas fa-times"></i> : <i className="fas fa-bars"></i>}
+        </button>
+
       </nav>
 
       <h1 className="heading">Welcome To RealHome</h1>
